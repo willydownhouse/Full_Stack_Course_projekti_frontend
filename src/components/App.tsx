@@ -1,20 +1,22 @@
 import React from 'react';
-import { useEffect } from 'react';
-import TripsList from './TripsList';
-import { getAllTrips } from '../actions/trips';
-import { useDispatch } from 'react-redux';
+
+import { BrowserRouter, Route, Routes } from 'react-router-dom';
+
+import MainPage from './MainPage';
+import MtbTripsPage from './MtbTripsPage';
+import SingleTripPage from './SingleTripPage';
+import SkiTripsPage from './SkiTripsPage';
 
 const App = () => {
-  const dispatch = useDispatch();
-
-  useEffect(() => {
-    dispatch(getAllTrips());
-  }, []);
-
   return (
-    <div>
-      <TripsList />
-    </div>
+    <BrowserRouter>
+      <Routes>
+        <Route path="/" element={<MainPage />} />
+        <Route path="/trips/mtb" element={<MtbTripsPage />} />
+        <Route path="/trips/ski" element={<SkiTripsPage />} />
+        <Route path="/trips/:id" element={<SingleTripPage />} />
+      </Routes>
+    </BrowserRouter>
   );
 };
 

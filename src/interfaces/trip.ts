@@ -1,5 +1,5 @@
-export default interface ITrip {
-  id: string;
+export interface ITrip {
+  _id: string;
   type: string;
   name: string;
   location: object;
@@ -15,4 +15,8 @@ export default interface ITrip {
   images?: string[];
   startDates?: string[];
   active: boolean;
+}
+
+export interface TripProps {
+  trip: ITrip;
 }

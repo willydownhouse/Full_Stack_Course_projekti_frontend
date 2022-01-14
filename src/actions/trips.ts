@@ -1,4 +1,5 @@
-import { GET_ALL_TRIPS, IAppDispatch } from './types';
+import { GET_ALL_TRIPS } from './types';
+import { IAppDispatch } from '../interfaces/actions';
 import tripApi from '../api/tripApi';
 
 export const getAllTrips = () => async (dispatch: IAppDispatch) => {
@@ -6,6 +7,6 @@ export const getAllTrips = () => async (dispatch: IAppDispatch) => {
 
   dispatch({
     type: GET_ALL_TRIPS,
-    payload: res.data.data,
+    payload: res.data.trips,
   });
 };

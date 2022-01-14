@@ -1,40 +1,29 @@
 import React from 'react';
+import { useEffect } from 'react';
 import { useSelector } from 'react-redux';
-//import { IAppState } from '../actions/types';
-import ITrip from '../interfaces/trip';
-
-interface State {
-  trips: ITrip[];
-}
+import { IState } from '../interfaces/state';
+import { useDispatch } from 'react-redux';
+import { getAllTrips } from '../actions/trips';
+import Trip from './Trip';
+import '../css/tripslist.css';
 
 const TripsList = () => {
-  const trips = useSelector((state: State) => state.trips);
+  const dispatch = useDispatch();
+  const trips = useSelector((state: IState) => state.trips);
 
   console.log(trips);
 
+  useEffect(() => {
+    dispatch(getAllTrips());
+  }, []);
+
   const renderTrips = () => {
     return trips.map(trip => {
-      return (
-        <div key={trip.id}>
-          <h2>{trip.name}</h2>
-          <h3>Start dates:</h3>
-          <ul>
-            {trip.startDates?.map(date => {
-              return <li key={date}>{date}</li>;
-            })}
-          </ul>
-          <img
-            style={{
-              width: '300px',
-            }}
-            src={trip.mainImg}
-          />
-        </div>
-      );
+      return <Trip key={trip._id} trip={trip} />;
     });
   };
 
-  return <div>{renderTrips()}</div>;
+  return <div className="trips">{renderTrips()}</div>;
 };
 
 export default TripsList;

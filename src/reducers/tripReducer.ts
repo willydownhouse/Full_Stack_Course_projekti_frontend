@@ -1,5 +1,5 @@
 import { GET_ALL_TRIPS } from '../actions/types';
-import { IAppAction } from '../actions/types';
+import { IAppAction } from '../interfaces/actions';
 
 const tripReducer = (state = [], action: IAppAction) => {
   switch (action.type) {
