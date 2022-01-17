@@ -1,17 +1,26 @@
 import React from 'react';
-import Menu from './Menu';
+import { useSelector, useDispatch } from 'react-redux';
+import { IState } from '../interfaces/state';
+import { openMenu, closeMenu } from '../actions/menu';
 import '../css/header.css';
 
 const Header: React.FC = (): JSX.Element => {
+  const dispatch = useDispatch();
+  const menuOpen = useSelector((state: IState) => state.menuOpen);
+
   return (
     <>
       <div className="header">
-        <div className="logo">AB</div>
-        <div onClick={() => console.log('clikked')} className="burger">
+        <div></div>
+        <div
+          onClick={() => {
+            menuOpen ? dispatch(closeMenu()) : dispatch(openMenu());
+          }}
+          className={`burger ${menuOpen ? 'open' : ''}`}
+        >
           <div className="beef"></div>
         </div>
       </div>
-      <Menu />
     </>
   );
 };

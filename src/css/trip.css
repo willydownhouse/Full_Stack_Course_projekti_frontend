@@ -1,0 +1,48 @@
+.grid {
+  height: 50rem;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-template-rows: 1fr 10fr;
+  margin-bottom: 3rem;
+}
+.grid-title {
+}
+.grid-img {
+  max-width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.grid-description {
+  margin-top: 2rem;
+}
+.grid-text {
+  background-color: yellow;
+}
+.grid-start {
+  margin-top: 2rem;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-template-rows: 0.5fr 2fr;
+}
+
+.dates {
+  display: flex;
+  grid-column: 1/2;
+}
+.dates-list {
+  display: flex;
+  flex-direction: column;
+}
+
+.price-title {
+  grid-column: 2/3;
+  grid-row: 1/2;
+}
+
+@media screen and (max-width: 600px) {
+  .grid {
+    grid-template-columns: 1fr;
+    grid-template-rows: 0.5fr 2fr 2fr 1fr 0.5fr;
+  }
+}

@@ -7,9 +7,16 @@ import MtbTripsPage from './MtbTripsPage';
 import SingleTripPage from './SingleTripPage';
 import SkiTripsPage from './SkiTripsPage';
 
+import '../css/app.css';
+import Header from './Header';
+import Menu from './Menu';
+
 const App = () => {
+  console.log('APP RENDERS');
   return (
     <BrowserRouter>
+      <Header />
+      <Menu />
       <Routes>
         <Route path="/" element={<MainPage />} />
         <Route path="/trips/mtb" element={<MtbTripsPage />} />

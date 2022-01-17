@@ -18,15 +18,16 @@ const Showcase: React.FC<ShowcaseProps> = ({
   return (
     <>
       <div className="showcase">
+        <div className="logo"></div>
         <div className="showcase-content">
           <h2 className="title">{title}</h2>
           <p className="paragraph">{paragraph}</p>
           <div className="btn-group mt-4" role="group">
             <Link to="trips/mtb" className="link1">
-              <button className="btn btn-outline-danger mr-5">{link1}</button>
+              <button className="button mr-5">{link1}</button>
             </Link>
             <Link to="trips/ski" className="link2">
-              <button className="btn btn-outline-primary">{link2}</button>
+              <button className="button">{link2}</button>
             </Link>
           </div>
         </div>

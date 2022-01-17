@@ -1,24 +1,55 @@
 import React from 'react';
-
 import { Link } from 'react-router-dom';
+import { useDispatch, useSelector } from 'react-redux';
+import { closeMenu } from '../actions/menu';
+import { IState } from '../interfaces/state';
 import '../css/menu.css';
 
 const Menu = () => {
+  const dispatch = useDispatch();
+  const menuOpen = useSelector((state: IState) => state.menuOpen);
+
   return (
-    <div className="menu">
+    <div className={menuOpen ? 'menu showMenu' : 'menu'}>
       <ul className="links">
         <li>
-          <Link to="/trips/mtb" className="link">
+          <Link className="link" onClick={() => dispatch(closeMenu())} to="/">
+            Home
+          </Link>
+        </li>
+        <li>
+          <Link
+            className="link"
+            onClick={() => dispatch(closeMenu())}
+            to="/trips/mtb"
+          >
             Mtb
           </Link>
         </li>
         <li>
-          <Link to="/trips/ski" className="link">
+          <Link
+            className="link"
+            onClick={() => dispatch(closeMenu())}
+            to="/trips/ski"
+          >
             Ski
           </Link>
         </li>
         <li>
-          <Link to="/login" className="link">
+          <Link
+            className="link"
+            onClick={() => dispatch(closeMenu())}
+            to="/blogs"
+          >
+            Blog
+          </Link>
+        </li>
+        <li>
+          <Link
+            className="link"
+            onClick={() => dispatch(closeMenu())}
+            to="/login"
+          >
             Login
           </Link>
         </li>

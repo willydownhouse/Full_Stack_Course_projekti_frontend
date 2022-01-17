@@ -16,7 +16,3 @@ export interface ITrip {
   startDates?: string[];
   active: boolean;
 }
-
-export interface TripProps {
-  trip: ITrip;
-}

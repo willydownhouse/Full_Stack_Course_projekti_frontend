@@ -1,24 +1,43 @@
 .menu {
-  position: absolute;
+  position: fixed;
   top: 0;
   left: 100%;
-  width: 100%;
+  width: 30%;
   height: 100vh;
-  background: blue;
+  /* background: linear-gradient(rgba(11, 34, 54, 0.9), rgb(12, 77, 98, 1)); */
+  background: linear-gradient(rgba(49, 49, 49, 0.9), rgb(74, 74, 74, 1));
+  z-index: 6;
+  transition: all 0.5s ease;
   display: flex;
   align-items: center;
   justify-content: center;
 }
 
 .links {
-  height: 80%;
+  height: 40%;
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: space-around;
+  justify-content: space-between;
 }
 
 .link {
+  color: #dbdbdb;
+  font-size: 1.5rem;
+  letter-spacing: 1px;
+}
+
+.link:hover {
   color: white;
-  font-size: 2rem;
+  text-decoration: none;
+}
+
+.showMenu {
+  transform: translateX(-100%);
+}
+
+@media screen and (max-width: 600px) {
+  .menu {
+    width: 100%;
+  }
 }
