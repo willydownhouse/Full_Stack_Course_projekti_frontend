@@ -4,11 +4,11 @@
 }
 
 .mtb {
-  background: url('../../img/sum1.jpg') no-repeat center center/cover;
+  background: url('../../public/img/sum1.jpg') no-repeat center center/cover;
 }
 
 .ski {
-  background: url('../../img/win1.jpg') no-repeat center center/cover;
+  background: url('../../public/img/win1.jpg') no-repeat center center/cover;
 }
 
 .bg-shading {

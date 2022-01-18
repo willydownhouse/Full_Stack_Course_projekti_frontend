@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
 
@@ -10,6 +10,11 @@ import SkiTripsPage from './SkiTripsPage';
 import '../css/app.css';
 import Header from './Header';
 import Menu from './Menu';
+
+// type AppProps = {
+//   hideLoader: () => void;
+//   showLoader: () => void;
+// };
 
 const App = () => {
   console.log('APP RENDERS');

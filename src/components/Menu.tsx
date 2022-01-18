@@ -39,6 +39,15 @@ const Menu = () => {
           <Link
             className="link"
             onClick={() => dispatch(closeMenu())}
+            to="/booking"
+          >
+            Booking
+          </Link>
+        </li>
+        <li>
+          <Link
+            className="link"
+            onClick={() => dispatch(closeMenu())}
             to="/blogs"
           >
             Blog

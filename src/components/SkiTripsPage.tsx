@@ -14,7 +14,6 @@ const SkiTripsPage = () => {
     dispatch(getAllTrips('ski'));
   }, []);
 
-  console.log(trips);
   return (
     <div>
       <TripShowcase type="Ski" />

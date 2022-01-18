@@ -10,8 +10,6 @@ const MtbTripsPage = () => {
   const dispatch = useDispatch();
   const trips: ITrip[] = useSelector((state: IState) => state.trips);
 
-  console.log(trips);
-
   useEffect(() => {
     dispatch(getAllTrips('mtb'));
   }, []);

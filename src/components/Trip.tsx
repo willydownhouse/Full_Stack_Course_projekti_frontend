@@ -27,6 +27,10 @@ const Trip = ({ trip }: TripProps) => {
         <div className="grid-description">
           <p className="card-text">{trip.description}</p>
         </div>
+        <div className="grid-details">
+          <h6 className="max-size">Groupsize {trip.maxGroupSize}</h6>
+          <h6 className="rating">Rating {trip.reviewAverage}</h6>
+        </div>
         <div className="grid-start">
           <h6 className="dates-title">Next weeks</h6>
           <div className="dates">

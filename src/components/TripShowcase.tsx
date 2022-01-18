@@ -6,7 +6,6 @@ type TripShowcaseProps = {
 };
 
 const TripShowcase = ({ type }: TripShowcaseProps) => {
-  console.log(type);
   return (
     <>
       <div className={`trip-showcase ${type === 'Ski' ? 'ski' : 'mtb'}`}></div>
