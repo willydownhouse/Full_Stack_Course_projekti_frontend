@@ -1,14 +1,13 @@
 .trip-showcase {
   width: 100%;
   height: 80vh;
+  opacity: 0;
 }
 
-.mtb {
-  background: url('../../public/img/sum1.jpg') no-repeat center center/cover;
-}
-
-.ski {
-  background: url('../../public/img/win1.jpg') no-repeat center center/cover;
+.trip-showcase-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
 }
 
 .bg-shading {

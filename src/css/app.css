@@ -51,28 +51,43 @@ p {
   background: #a6a6a6;
 }
 
-.loader {
-  position: absolute;
-  top: calc(50% - 4em);
-  left: calc(50% - 4em);
-  width: 6em;
-  height: 6em;
-  border: 1.1em solid rgba(0, 0, 0, 0.2);
-  border-left: 1.1em solid #000000;
-  border-radius: 50%;
-  animation: load8 1.1s infinite linear;
-  transition: opacity 0.3s;
+.visible-anim-delay {
+  animation: show 1s forwards ease;
+  animation-delay: 2s;
+}
+.visible-anim {
+  animation: show 1s forwards ease;
 }
 
-.loader--hide {
-  opacity: 0;
-}
-
-@keyframes load8 {
+@keyframes toDown {
   0% {
-    transform: rotate(0deg);
+    opacity: 0;
+    transform: translateY(-100%);
   }
+
   100% {
-    transform: rotate(360deg);
+    opacity: 1;
+    translate: translateY(0);
+  }
+}
+@keyframes toUp {
+  0% {
+    opacity: 0;
+    transform: translateY(100%);
+  }
+
+  100% {
+    opacity: 1;
+    translate: translateY(0);
+  }
+}
+
+@keyframes show {
+  0% {
+    opacity: 0;
+  }
+
+  100% {
+    opacity: 1;
   }
 }

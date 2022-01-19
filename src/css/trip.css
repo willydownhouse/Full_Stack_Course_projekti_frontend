@@ -13,6 +13,9 @@
 .grid-img-cont {
   grid-column: 2/3;
   grid-row: 2/3;
+  display: flex;
+  align-items: center;
+  justify-content: end;
 }
 .grid-img {
   max-width: 100%;
@@ -23,7 +26,7 @@
 .grid-description {
   grid-column: 1/2;
   grid-row: 2/3;
-  padding-right: 4rem;
+  padding-right: 1rem;
 }
 .grid-details {
   margin-top: 2rem;
@@ -36,6 +39,7 @@
   grid-row: 3/4;
   margin-top: 2rem;
   display: grid;
+
   grid-template-columns: 1fr 1fr;
   grid-template-rows: 0.5fr 2fr;
 }

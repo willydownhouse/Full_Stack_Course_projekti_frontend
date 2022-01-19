@@ -21,7 +21,7 @@ const Menu = () => {
           <Link
             className="link"
             onClick={() => dispatch(closeMenu())}
-            to="/trips/mtb"
+            to="/mtb"
           >
             Mtb
           </Link>
@@ -30,7 +30,7 @@ const Menu = () => {
           <Link
             className="link"
             onClick={() => dispatch(closeMenu())}
-            to="/trips/ski"
+            to="/ski"
           >
             Ski
           </Link>

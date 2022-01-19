@@ -24,8 +24,8 @@ const App = () => {
       <Menu />
       <Routes>
         <Route path="/" element={<MainPage />} />
-        <Route path="/trips/mtb" element={<MtbTripsPage />} />
-        <Route path="/trips/ski" element={<SkiTripsPage />} />
+        <Route path="/mtb" element={<MtbTripsPage />} />
+        <Route path="/ski" element={<SkiTripsPage />} />
         <Route path="/trips/:id" element={<SingleTripPage />} />
       </Routes>
     </BrowserRouter>

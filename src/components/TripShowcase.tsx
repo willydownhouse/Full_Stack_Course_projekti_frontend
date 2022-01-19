@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import '../css/tripShowcase.css';
 
 type TripShowcaseProps = {
@@ -6,9 +6,16 @@ type TripShowcaseProps = {
 };
 
 const TripShowcase = ({ type }: TripShowcaseProps) => {
+  const [loaded, setLoaded] = useState(false);
   return (
     <>
-      <div className={`trip-showcase ${type === 'Ski' ? 'ski' : 'mtb'}`}></div>
+      <div className={`trip-showcase ${loaded ? 'visible-anim' : ''}`}>
+        <img
+          onLoad={() => setLoaded(true)}
+          className="trip-showcase-img"
+          src={type === 'Ski' ? './img/win1.jpg' : './img/sum1.jpg'}
+        />
+      </div>
       <div className="bg-shading"></div>
     </>
   );
