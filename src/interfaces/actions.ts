@@ -15,9 +15,27 @@ interface ReviewAction extends BaseAction {
   payload: IReview | IReview[];
 }
 
-interface MenuAction extends BaseAction {
+export interface MenuAction extends BaseAction {
   payload: boolean;
 }
 
-export type IAppAction = TripAction | ReviewAction | MenuAction;
+interface LoginAction extends BaseAction {
+  payload: LoginPayload;
+}
+
+interface NotificationAction extends BaseAction {
+  payload: string | null;
+}
+
+export type LoginPayload = {
+  token: string;
+  user: string;
+};
+
+export type IAppAction =
+  | TripAction
+  | ReviewAction
+  | MenuAction
+  | LoginAction
+  | NotificationAction;
 export type IAppDispatch = ThunkDispatch<IState, unknown, IAppAction>;

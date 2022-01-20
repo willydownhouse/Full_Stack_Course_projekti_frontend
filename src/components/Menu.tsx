@@ -2,65 +2,36 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import { closeMenu } from '../actions/menu';
+import { openLoginModal } from '../actions/logInModal';
+import { logout } from '../actions/authentication';
 import { IState } from '../interfaces/state';
 import '../css/menu.css';
+import MenuLink from './MenuLink';
 
 const Menu = () => {
   const dispatch = useDispatch();
   const menuOpen = useSelector((state: IState) => state.menuOpen);
+  const isLoggedIn = useSelector((state: IState) => state.auth.isLoggedIn);
 
   return (
-    <div className={menuOpen ? 'menu showMenu' : 'menu'}>
+    <div className={`menu ${menuOpen ? 'showMenu' : ''}`}>
       <ul className="links">
+        <MenuLink title="Home" to="/" onClick={closeMenu} />
+        <MenuLink title="Mtb" to="/mtb" onClick={closeMenu} />
+        <MenuLink title="Ski" to="/ski" onClick={closeMenu} />
+        <MenuLink title="Booking" to="/booking" onClick={closeMenu} />
+        <MenuLink title="Blog" to="/blog" onClick={closeMenu} />
+
         <li>
-          <Link className="link" onClick={() => dispatch(closeMenu())} to="/">
-            Home
-          </Link>
-        </li>
-        <li>
-          <Link
+          <p
             className="link"
-            onClick={() => dispatch(closeMenu())}
-            to="/mtb"
+            onClick={() => {
+              dispatch(closeMenu());
+              isLoggedIn ? dispatch(logout()) : dispatch(openLoginModal());
+            }}
           >
-            Mtb
-          </Link>
-        </li>
-        <li>
-          <Link
-            className="link"
-            onClick={() => dispatch(closeMenu())}
-            to="/ski"
-          >
-            Ski
-          </Link>
-        </li>
-        <li>
-          <Link
-            className="link"
-            onClick={() => dispatch(closeMenu())}
-            to="/booking"
-          >
-            Booking
-          </Link>
-        </li>
-        <li>
-          <Link
-            className="link"
-            onClick={() => dispatch(closeMenu())}
-            to="/blogs"
-          >
-            Blog
-          </Link>
-        </li>
-        <li>
-          <Link
-            className="link"
-            onClick={() => dispatch(closeMenu())}
-            to="/login"
-          >
-            Login
-          </Link>
+            {isLoggedIn ? 'Log out' : 'Log in'}
+          </p>
         </li>
       </ul>
     </div>

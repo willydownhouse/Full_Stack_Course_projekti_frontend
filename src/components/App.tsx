@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React from 'react';
 
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
 
@@ -10,23 +10,23 @@ import SkiTripsPage from './SkiTripsPage';
 import '../css/app.css';
 import Header from './Header';
 import Menu from './Menu';
-
-// type AppProps = {
-//   hideLoader: () => void;
-//   showLoader: () => void;
-// };
+import Login from './Login';
+import Booking from './Booking';
 
 const App = () => {
   console.log('APP RENDERS');
+
   return (
     <BrowserRouter>
       <Header />
       <Menu />
+      <Login />
       <Routes>
         <Route path="/" element={<MainPage />} />
         <Route path="/mtb" element={<MtbTripsPage />} />
         <Route path="/ski" element={<SkiTripsPage />} />
         <Route path="/trips/:id" element={<SingleTripPage />} />
+        <Route path="/booking" element={<Booking />} />
       </Routes>
     </BrowserRouter>
   );
