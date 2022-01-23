@@ -1,29 +1,32 @@
 import React from 'react';
 import { useDispatch } from 'react-redux';
 import { login } from '../actions/authentication';
+import { LoginValues } from '../interfaces/login';
 import {
   Formik,
   FormikHelpers,
   FormikProps,
   Form,
-  Field,
   FieldProps,
+  FormikErrors,
+  FormikTouched,
 } from 'formik';
+import MyFormField from './MyFormField';
+import * as yup from 'yup';
 import '../css/loginForm.css';
-
-interface LoginValues {
-  email: string;
-  password: string;
-}
-interface LoginErrors {
-  email?: string;
-  password?: string;
-}
 
 const initialValues: LoginValues = {
   email: '',
   password: '',
 };
+
+const LoginSchema = yup.object().shape({
+  email: yup.string().email('Invalid email').required('Required'),
+  password: yup
+    .string()
+    .min(6, 'Password at least 6 characters')
+    .required('Required'),
+});
 
 const LoginForm = () => {
   const dispatch = useDispatch();
@@ -31,48 +34,29 @@ const LoginForm = () => {
     <Formik
       initialValues={initialValues}
       onSubmit={({ email, password }: LoginValues, { resetForm }) => {
+        console.log('login');
         dispatch(login(email, password));
         resetForm();
       }}
-      validate={(values: LoginValues) => {
-        const errors: LoginErrors = {};
-        if (!values.email) {
-          errors.email = 'Required';
-        } else if (!values.password) {
-          errors.password = 'Required';
-        }
-        return errors;
-      }}
+      validationSchema={LoginSchema}
     >
       {({ touched, errors, isSubmitting }) => (
-        <Form className="form">
-          <div className="mb-3">
-            <Field
-              type="email"
-              name="email"
-              placeholder="Email"
-              className={`form-control ${
-                touched.email && errors.email ? 'is-invalid' : ''
-              }`}
-            />
-            {touched.email && errors.email && (
-              <div className="text-danger">{errors.email}</div>
-            )}
-          </div>
+        <Form className="login-form">
+          <MyFormField
+            type="text"
+            name="email"
+            placeholder="email"
+            errors={errors.email as FormikErrors<LoginValues>}
+            touched={touched.password as FormikTouched<LoginValues>}
+          />
 
-          <div className="mb-3">
-            <Field
-              type="password"
-              name="password"
-              placeholder="Password"
-              className={`form-control ${
-                touched.password && errors.password ? 'is-invalid' : ''
-              }`}
-            />
-            {touched.password && errors.password && (
-              <div className="text-danger">{errors.password}</div>
-            )}
-          </div>
+          <MyFormField
+            type="password"
+            name="password"
+            placeholder="password"
+            errors={errors.password as FormikErrors<LoginValues>}
+            touched={touched.password as FormikTouched<LoginValues>}
+          />
 
           <button
             className="button btn-small"

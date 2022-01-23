@@ -1,5 +1,4 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import { closeMenu } from '../actions/menu';
 import { openLoginModal } from '../actions/logInModal';
@@ -19,8 +18,14 @@ const Menu = () => {
         <MenuLink title="Home" to="/" onClick={closeMenu} />
         <MenuLink title="Mtb" to="/mtb" onClick={closeMenu} />
         <MenuLink title="Ski" to="/ski" onClick={closeMenu} />
-        <MenuLink title="Booking" to="/booking" onClick={closeMenu} />
-        <MenuLink title="Blog" to="/blog" onClick={closeMenu} />
+        {isLoggedIn ? (
+          <MenuLink title="Booking" to="/booking" onClick={closeMenu} />
+        ) : null}
+
+        {/*  <MenuLink title="Blog" to="/blog" onClick={closeMenu} /> */}
+        {isLoggedIn ? (
+          <MenuLink title="My page" to="/me" onClick={closeMenu} />
+        ) : null}
 
         <li>
           <p

@@ -10,7 +10,7 @@
 }
 
 .anim {
-  animation: show-login 0.4s forwards ease;
+  animation: show-login 0.3s forwards;
 }
 
 @keyframes show-login {
@@ -38,7 +38,6 @@
   border-radius: 5px;
   min-width: 50%;
   padding: 3rem 1.5rem;
-  /* background: linear-gradient(rgba(49, 49, 49, 0.9), rgb(74, 74, 74, 1)); */
   background: linear-gradient(rgba(209, 209, 209, 0.9), rgb(69, 69, 69, 1));
   display: flex;
   align-items: center;

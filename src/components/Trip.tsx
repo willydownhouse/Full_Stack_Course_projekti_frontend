@@ -2,8 +2,11 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import { TripProps } from '../types/tripProps';
 import '../css/trip.css';
+import { useSelector } from 'react-redux';
+import { IState } from '../interfaces/state';
 
 const Trip = ({ trip }: TripProps) => {
+  const isLoggedIn = useSelector((state: IState) => state.auth.isLoggedIn);
   const renderDates = (dates: string[] = []) => {
     return dates.map(date => {
       return (
@@ -42,7 +45,11 @@ const Trip = ({ trip }: TripProps) => {
           </div>
         </div>
         <div className="booking">
-          <button className="button btn-grey">Book</button>
+          {isLoggedIn ? (
+            <Link to="/booking">
+              <button className="button btn-grey">Book</button>
+            </Link>
+          ) : null}
         </div>
       </div>
     </div>

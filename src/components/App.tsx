@@ -12,8 +12,13 @@ import Header from './Header';
 import Menu from './Menu';
 import Login from './Login';
 import Booking from './Booking';
+import MyPage from './MyPage';
+import NoAccessPage from './NoAccessPage';
+import { IState } from '../interfaces/state';
+import { useSelector } from 'react-redux';
 
 const App = () => {
+  const isLoggedIn = useSelector((state: IState) => state.auth.isLoggedIn);
   console.log('APP RENDERS');
 
   return (
@@ -26,7 +31,26 @@ const App = () => {
         <Route path="/mtb" element={<MtbTripsPage />} />
         <Route path="/ski" element={<SkiTripsPage />} />
         <Route path="/trips/:id" element={<SingleTripPage />} />
-        <Route path="/booking" element={<Booking />} />
+        <Route
+          path="/booking"
+          element={
+            isLoggedIn ? (
+              <Booking />
+            ) : (
+              <NoAccessPage message="Please log in to get access" />
+            )
+          }
+        />
+        <Route
+          path="/me"
+          element={
+            isLoggedIn ? (
+              <MyPage />
+            ) : (
+              <NoAccessPage message="Please log in to get access" />
+            )
+          }
+        />
       </Routes>
     </BrowserRouter>
   );

@@ -26,6 +26,16 @@ p {
   color: #a6a6a6;
 }
 
+.no-access-page {
+  height: 100vh;
+}
+
+.flex-center {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
 .padding {
   padding: 1rem;
 }
