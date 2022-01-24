@@ -1,6 +1,6 @@
 import React from 'react';
 
-import { BrowserRouter, Route, Routes } from 'react-router-dom';
+import { Route, Routes } from 'react-router-dom';
 
 import MainPage from './MainPage';
 import MtbTripsPage from './MtbTripsPage';
@@ -15,14 +15,21 @@ import Booking from './Booking';
 import MyPage from './MyPage';
 import NoAccessPage from './NoAccessPage';
 import { IState } from '../interfaces/state';
-import { useSelector } from 'react-redux';
+import { RootStateOrAny, useSelector } from 'react-redux';
 
-const App = () => {
+import { ReduxRouter } from '@lagunovsky/redux-react-router';
+import history from '../history';
+
+type AppProps = {
+  store: RootStateOrAny;
+};
+
+const App = ({ store }: AppProps) => {
   const isLoggedIn = useSelector((state: IState) => state.auth.isLoggedIn);
   console.log('APP RENDERS');
 
   return (
-    <BrowserRouter>
+    <ReduxRouter history={history} store={store}>
       <Header />
       <Menu />
       <Login />
@@ -52,7 +59,7 @@ const App = () => {
           }
         />
       </Routes>
-    </BrowserRouter>
+    </ReduxRouter>
   );
 };
 

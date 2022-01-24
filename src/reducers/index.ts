@@ -5,6 +5,8 @@ import reviewReducer from './reviewReducer';
 import authenticationReducer from './authenticationReducer';
 import notificationReducer from './notificationReducer';
 import logInModalReducer from './logInModalReducer';
+import { createRouterReducer } from '@lagunovsky/redux-react-router';
+import history from '../history';
 
 export const rootReducer = combineReducers({
   trips: tripReducer,
@@ -13,4 +15,5 @@ export const rootReducer = combineReducers({
   notification: notificationReducer,
   menuOpen: menuReducer,
   logInOpen: logInModalReducer,
+  router: createRouterReducer(history),
 });

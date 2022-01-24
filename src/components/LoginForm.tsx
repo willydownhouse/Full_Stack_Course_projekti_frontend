@@ -2,15 +2,7 @@ import React from 'react';
 import { useDispatch } from 'react-redux';
 import { login } from '../actions/authentication';
 import { LoginValues } from '../interfaces/login';
-import {
-  Formik,
-  FormikHelpers,
-  FormikProps,
-  Form,
-  FieldProps,
-  FormikErrors,
-  FormikTouched,
-} from 'formik';
+import { Formik, Form, FormikErrors, FormikTouched } from 'formik';
 import MyFormField from './MyFormField';
 import * as yup from 'yup';
 import '../css/loginForm.css';

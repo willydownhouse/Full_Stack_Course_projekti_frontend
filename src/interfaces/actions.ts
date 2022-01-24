@@ -38,4 +38,5 @@ export type IAppAction =
   | MenuAction
   | LoginAction
   | NotificationAction;
+
 export type IAppDispatch = ThunkDispatch<IState, unknown, IAppAction>;

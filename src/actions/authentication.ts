@@ -3,6 +3,7 @@ import { IAppAction, IAppDispatch } from '../interfaces/actions';
 import { closeLoginModal } from './logInModal';
 import { removeNotification, setNotification } from './notification';
 import { LOG_IN, LOG_OUT } from './types';
+import history from '../history';
 
 export const login =
   (email: string, password: string) => async (dispatch: IAppDispatch) => {
@@ -19,9 +20,12 @@ export const login =
       dispatch(setNotification('You succesfully logged in!'));
       dispatch(closeLoginModal());
 
+      history.push('/me');
+
       setTimeout(() => {
         dispatch(removeNotification());
       }, 3000);
+      // eslint-disable-next-line @typescript-eslint/no-explicit-any
     } catch (err: any) {
       dispatch(setNotification(err.response.data.message));
       setTimeout(() => {
@@ -31,6 +35,7 @@ export const login =
   };
 
 export const logout = (): IAppAction => {
+  history.push('/');
   return {
     type: LOG_OUT,
     payload: null,
