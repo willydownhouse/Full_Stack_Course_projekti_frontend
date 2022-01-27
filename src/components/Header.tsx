@@ -13,6 +13,7 @@ const Header: React.FC = (): JSX.Element => {
       <div className="header">
         <div></div>
         <div
+          id="burger-menu"
           onClick={() => {
             menuOpen ? dispatch(closeMenu()) : dispatch(openMenu());
           }}

@@ -8,5 +8,6 @@ export interface IState {
   menuOpen: boolean;
   logInOpen: boolean;
   auth: IAuthObj;
+  notification: string | null;
   error: string | null;
 }

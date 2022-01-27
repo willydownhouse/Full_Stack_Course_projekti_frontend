@@ -22,10 +22,14 @@ const Showcase = ({ title, paragraph, link1, link2 }: ShowcaseProps) => {
           <p className="paragraph">{paragraph}</p>
           <div className="btn-group mt-4" role="group">
             <Link to="/mtb" className="link1">
-              <button className="button mr-5">{link1}</button>
+              <button id="btn-mtb" className="button mr-5">
+                {link1}
+              </button>
             </Link>
             <Link to="/ski" className="link2">
-              <button className="button">{link2}</button>
+              <button id="btn-ski" className="button">
+                {link2}
+              </button>
             </Link>
           </div>
         </div>

@@ -14,6 +14,7 @@ import Login from './Login';
 import Booking from './Booking';
 import MyPage from './MyPage';
 import NoAccessPage from './NoAccessPage';
+import Notification from './Notification';
 import { IState } from '../interfaces/state';
 import { RootStateOrAny, useSelector } from 'react-redux';
 
@@ -27,12 +28,14 @@ type AppProps = {
 const App = ({ store }: AppProps) => {
   const isLoggedIn = useSelector((state: IState) => state.auth.isLoggedIn);
   console.log('APP RENDERS');
+  console.log('version: 0');
 
   return (
     <ReduxRouter history={history} store={store}>
       <Header />
       <Menu />
       <Login />
+      <Notification />
       <Routes>
         <Route path="/" element={<MainPage />} />
         <Route path="/mtb" element={<MtbTripsPage />} />

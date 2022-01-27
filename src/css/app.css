@@ -73,6 +73,38 @@ p {
   animation: show 1s forwards ease;
 }
 
+.notification {
+  position: fixed;
+  width: 100%;
+  height: 100vh;
+  background: transparent;
+  z-index: 15;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transform: translateX(200%);
+}
+
+.show-notification {
+  animation: showNotification 0.4s forwards;
+}
+
+@keyframes showNotification {
+  0% {
+    opacity: 0;
+  }
+
+  25% {
+    transform: translateX(0);
+    opacity: 0;
+  }
+
+  100% {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
 @keyframes toDown {
   0% {
     opacity: 0;
