@@ -29,7 +29,7 @@ const App = ({ store }: AppProps) => {
   const isLoggedIn = useSelector((state: IState) => state.auth.isLoggedIn);
 
   console.log('Environment');
-  console.log(process.env);
+  console.log(process.env.NODE_ENV);
 
   return (
     <ReduxRouter history={history} store={store}>

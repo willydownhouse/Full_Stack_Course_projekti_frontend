@@ -36,3 +36,12 @@ jobs:
           wait-on: http://localhost:3000
         env:
           CYPRESS_REACT_APP_API_PROD_URL: https://powerful-mountain-41188.herokuapp.com/api
+
+      - name: debloy
+        uses: akhileshns/heroku-deploy@v3.12.12
+        with:
+          heroku_api_key: ${{secrets.HEROKU_API_KEY}}
+          heroku_app_name: 'tranquil-beyond-71839'
+          heroku_email: 'ville.l.alatalo@gmail.com'
+        env:
+          HD_REACT_APP_API_PROD_URL: https://powerful-mountain-41188.herokuapp.com/api
