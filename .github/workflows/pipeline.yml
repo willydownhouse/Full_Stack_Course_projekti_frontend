@@ -26,13 +26,13 @@ jobs:
           REACT_APP_API_PROD_URL: https://powerful-mountain-41188.herokuapp.com/api
 
       - name: install serve for running production build
-        run: npm install serve
+        run: npm install -g serve
 
       - name: test e2e
         uses: cypress-io/github-action@v2
         with:
           command: npx cypress run
-          start: npm run start:prod
+          start: npm run start
           wait-on: http://localhost:3000
         env:
           CYPRESS_REACT_APP_API_PROD_URL: https://powerful-mountain-41188.herokuapp.com/api
