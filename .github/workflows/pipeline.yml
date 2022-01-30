@@ -19,9 +19,11 @@ jobs:
         run: npm run lint
       - name: build
         run: npm run build
+      - name: install serve for running production build
+        run: npm install serve
       - name: test e2e
         uses: cypress-io/github-action@v2
         with:
           command: npx cypress run
-          start: npm start
+          start: serve -s build
           wait-on: http://localhost:3000
