@@ -27,8 +27,9 @@ type AppProps = {
 
 const App = ({ store }: AppProps) => {
   const isLoggedIn = useSelector((state: IState) => state.auth.isLoggedIn);
-  console.log('APP RENDERS');
-  console.log('version: 0');
+
+  console.log('Environment:');
+  console.log(process.env.NODE_ENV);
 
   return (
     <ReduxRouter history={history} store={store}>

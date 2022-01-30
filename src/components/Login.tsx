@@ -17,7 +17,7 @@ const Login = () => {
   if (!logInOpen) return null;
 
   return (
-    <div className={`login ${logInOpen ? 'anim' : ''}`}>
+    <div id="login-form" className={`login ${logInOpen ? 'anim' : ''}`}>
       <div ref={wrapperRef} className="login-window">
         <LoginForm />
       </div>

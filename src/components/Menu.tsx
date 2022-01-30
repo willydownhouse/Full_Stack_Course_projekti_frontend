@@ -29,6 +29,7 @@ const Menu = () => {
 
         <li>
           <p
+            id="menu-login"
             className="link"
             onClick={() => {
               dispatch(closeMenu());
