@@ -38,6 +38,7 @@ jobs:
           CYPRESS_REACT_APP_API_PROD_URL: https://powerful-mountain-41188.herokuapp.com/api
 
       - name: debloy
+        if: ${{ github.event_name == 'push' && !contains(github.event.head_commit.message, 'skip')}}
         uses: akhileshns/heroku-deploy@v3.12.12
         with:
           heroku_api_key: ${{secrets.HEROKU_API_KEY}}
