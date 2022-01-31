@@ -2,7 +2,7 @@ import tripApi from '../api/tripApi';
 import { IAppAction, IAppDispatch } from '../interfaces/actions';
 import { closeLogin } from './logInModal';
 import { removeNotification, setNotification } from './notification';
-import { LOG_IN, LOG_OUT } from './types';
+import { LOG_IN, LOG_OUT, SET_CURRENT_USER } from './types';
 import history from '../history';
 
 export const login =
@@ -58,8 +58,20 @@ export const signup =
 
 export const logout = (): IAppAction => {
   history.push('/');
+
   return {
     type: LOG_OUT,
     payload: null,
+  };
+};
+
+export const setCurrentUser = (id: string) => {
+  //check if user exists
+  return {
+    type: SET_CURRENT_USER,
+    payload: {
+      isLoggedIn: true,
+      user: id,
+    },
   };
 };

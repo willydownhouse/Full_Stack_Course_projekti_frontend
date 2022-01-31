@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 
 import { Route, Routes } from 'react-router-dom';
 
@@ -16,10 +16,11 @@ import MyPage from './MyPage';
 import NoAccessPage from './NoAccessPage';
 import Notification from './Notification';
 import { IState } from '../interfaces/state';
-import { RootStateOrAny, useSelector } from 'react-redux';
+import { RootStateOrAny, useDispatch, useSelector } from 'react-redux';
 
 import { ReduxRouter } from '@lagunovsky/redux-react-router';
 import history from '../history';
+import { setCurrentUser } from '../actions/authentication';
 
 type AppProps = {
   store: RootStateOrAny;
@@ -27,9 +28,23 @@ type AppProps = {
 
 const App = ({ store }: AppProps) => {
   const isLoggedIn = useSelector((state: IState) => state.auth.isLoggedIn);
+  const dispatch = useDispatch();
 
   console.log('Environment:');
   console.log(process.env.NODE_ENV);
+
+  console.log('isLoggedIn');
+  console.log(isLoggedIn);
+
+  useEffect(() => {
+    const local = localStorage.getItem('user');
+
+    if (local) {
+      const { user } = JSON.parse(local as string);
+
+      dispatch(setCurrentUser(user));
+    }
+  }, []);
 
   return (
     <ReduxRouter history={history} store={store}>

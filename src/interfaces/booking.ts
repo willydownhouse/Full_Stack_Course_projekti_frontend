@@ -1,4 +1,4 @@
-export default interface IBooking {
+export interface IBooking {
   id: string;
   user: string;
   trip: string;

@@ -1,6 +1,7 @@
 import { IReview } from './review';
 import { ITrip } from './trip';
 import { IAuthObj } from './authentication';
+import { IBooking } from './booking';
 
 type LogInModal = {
   modalOpen: boolean;
@@ -11,6 +12,7 @@ type LogInModal = {
 export interface IState {
   trips: ITrip[];
   reviews: IReview[];
+  bookings: IBooking[];
   menuOpen: boolean;
   logInModal: LogInModal;
   auth: IAuthObj;

@@ -22,7 +22,6 @@ const Menu = () => {
           <MenuLink title="Booking" to="/booking" onClick={closeMenu} />
         ) : null}
 
-        {/*  <MenuLink title="Blog" to="/blog" onClick={closeMenu} /> */}
         {isLoggedIn ? (
           <MenuLink title="My page" to="/me" onClick={closeMenu} />
         ) : null}
