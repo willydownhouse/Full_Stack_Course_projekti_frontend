@@ -10,7 +10,6 @@ import * as yup from 'yup';
 import '../css/loginForm.css';
 import { openSignUp } from '../actions/logInModal';
 import { IState } from '../interfaces/state';
-import { string } from 'yup/lib/locale';
 
 const initialValues: LoginValues = {
   email: '',

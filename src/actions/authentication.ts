@@ -47,6 +47,7 @@ export const signup =
       if (res.status === 201) {
         dispatch(login(email, password));
       }
+      // eslint-disable-next-line @typescript-eslint/no-explicit-any
     } catch (err: any) {
       dispatch(setNotification(err.response.data.message));
       setTimeout(() => {
