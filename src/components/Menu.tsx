@@ -1,7 +1,7 @@
 import React from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { closeMenu } from '../actions/menu';
-import { openLoginModal } from '../actions/logInModal';
+import { openLogin } from '../actions/logInModal';
 import { logout } from '../actions/authentication';
 import { IState } from '../interfaces/state';
 import '../css/menu.css';
@@ -33,7 +33,7 @@ const Menu = () => {
             className="link"
             onClick={() => {
               dispatch(closeMenu());
-              isLoggedIn ? dispatch(logout()) : dispatch(openLoginModal());
+              isLoggedIn ? dispatch(logout()) : dispatch(openLogin());
             }}
           >
             {isLoggedIn ? 'Log out' : 'Log in'}

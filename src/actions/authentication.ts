@@ -1,6 +1,6 @@
 import tripApi from '../api/tripApi';
 import { IAppAction, IAppDispatch } from '../interfaces/actions';
-import { closeLoginModal } from './logInModal';
+import { closeLogin } from './logInModal';
 import { removeNotification, setNotification } from './notification';
 import { LOG_IN, LOG_OUT } from './types';
 import history from '../history';
@@ -18,7 +18,7 @@ export const login =
         payload: res.data,
       });
       dispatch(setNotification('You succesfully logged in!'));
-      dispatch(closeLoginModal());
+      dispatch(closeLogin());
 
       history.push('/me');
 
@@ -26,6 +26,27 @@ export const login =
         dispatch(removeNotification());
       }, 3000);
       // eslint-disable-next-line @typescript-eslint/no-explicit-any
+    } catch (err: any) {
+      dispatch(setNotification(err.response.data.message));
+      setTimeout(() => {
+        dispatch(removeNotification());
+      }, 3000);
+    }
+  };
+
+export const signup =
+  (email: string, password: string, confirmPassword: string) =>
+  async (dispatch: IAppDispatch) => {
+    try {
+      const res = await tripApi.post('/signup', {
+        email,
+        password,
+        confirmPassword,
+      });
+
+      if (res.status === 201) {
+        dispatch(login(email, password));
+      }
     } catch (err: any) {
       dispatch(setNotification(err.response.data.message));
       setTimeout(() => {

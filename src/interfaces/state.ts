@@ -2,11 +2,17 @@ import { IReview } from './review';
 import { ITrip } from './trip';
 import { IAuthObj } from './authentication';
 
+type LogInModal = {
+  modalOpen: boolean;
+  loginForm: boolean;
+  signUpForm: boolean;
+};
+
 export interface IState {
   trips: ITrip[];
   reviews: IReview[];
   menuOpen: boolean;
-  logInOpen: boolean;
+  logInModal: LogInModal;
   auth: IAuthObj;
   notification: string | null;
   error: string | null;

@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { Link } from 'react-router-dom';
 import '../css/tripShowcase.css';
 
 type TripShowcaseProps = {
@@ -15,8 +16,12 @@ const TripShowcase = ({ type }: TripShowcaseProps) => {
           className="trip-showcase-img"
           src={type === 'Ski' ? './img/win1.jpg' : './img/sum1.jpg'}
         />
+        <Link to="/">
+          <img className="trip-logo" src="./img/logo.png" />
+        </Link>
+
+        <div className="bg-shading"></div>
       </div>
-      <div className="bg-shading"></div>
     </>
   );
 };

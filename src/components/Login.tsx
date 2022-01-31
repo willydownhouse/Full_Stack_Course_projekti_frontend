@@ -1,6 +1,6 @@
 import React, { useRef } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { closeLoginModal } from '../actions/logInModal';
+import { closeLogin } from '../actions/logInModal';
 import { IState } from '../interfaces/state';
 import '../css/login.css';
 import { handleCloseModal } from '../utils/modal';
@@ -8,16 +8,16 @@ import LoginForm from './LoginForm';
 
 const Login = () => {
   const dispatch = useDispatch();
-  const logInOpen = useSelector((state: IState) => state.logInOpen);
+  const modalOpen = useSelector((state: IState) => state.logInModal.modalOpen);
 
   const wrapperRef = useRef(null);
 
-  handleCloseModal(wrapperRef, dispatch, closeLoginModal);
+  handleCloseModal(wrapperRef, dispatch, closeLogin);
 
-  if (!logInOpen) return null;
+  if (!modalOpen) return null;
 
   return (
-    <div id="login-form" className={`login ${logInOpen ? 'anim' : ''}`}>
+    <div id="login-form" className={`login ${modalOpen ? 'anim' : ''}`}>
       <div ref={wrapperRef} className="login-window">
         <LoginForm />
       </div>

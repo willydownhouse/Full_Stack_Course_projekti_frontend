@@ -27,6 +27,14 @@ interface NotificationAction extends BaseAction {
   payload: string | null;
 }
 
+interface OpenLoginModal extends BaseAction {
+  payload: {
+    modalOpen: boolean;
+    loginForm: boolean;
+    signUpForm: boolean;
+  };
+}
+
 export type LoginPayload = {
   token: string;
   user: string;
@@ -37,6 +45,7 @@ export type IAppAction =
   | ReviewAction
   | MenuAction
   | LoginAction
-  | NotificationAction;
+  | NotificationAction
+  | OpenLoginModal;
 
 export type IAppDispatch = ThunkDispatch<IState, unknown, IAppAction>;

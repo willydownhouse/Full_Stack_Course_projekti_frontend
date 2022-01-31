@@ -14,6 +14,6 @@ export const rootReducer = combineReducers({
   auth: authenticationReducer,
   notification: notificationReducer,
   menuOpen: menuReducer,
-  logInOpen: logInModalReducer,
+  logInModal: logInModalReducer,
   router: createRouterReducer(history),
 });
