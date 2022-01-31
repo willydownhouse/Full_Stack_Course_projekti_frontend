@@ -20,7 +20,7 @@ describe('Pages/Menu and login form opens', () => {
   it('Ski button changes to ski page', () => {
     cy.get('#btn-ski').click();
 
-    cy.contains('Lyngen ski week');
+    cy.contains('dev1');
   });
   it('Menu log in opens login form', () => {
     cy.get('#burger-menu').click();

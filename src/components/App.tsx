@@ -31,6 +31,8 @@ const App = ({ store }: AppProps) => {
   console.log('Environment:');
   console.log(process.env.NODE_ENV);
 
+  console.log('dev1');
+
   return (
     <ReduxRouter history={history} store={store}>
       <Header />
