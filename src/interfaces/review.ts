@@ -1,7 +1,14 @@
 export interface IReview {
   id: string;
-  user: string;
-  trip: string;
+  user: {
+    name?: {
+      first_name: string;
+      last_name: string;
+    };
+  };
+  trip: {
+    name: string;
+  };
   text: string;
   rating: number;
   createdAt: Date;

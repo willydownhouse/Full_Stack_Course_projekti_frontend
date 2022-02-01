@@ -8,7 +8,7 @@ const tripReducer = (state = [], action: IAppAction) => {
     case GET_ONE_TRIP:
       return action.payload;
     default:
-      return state;
+      return [...state];
   }
 };
 

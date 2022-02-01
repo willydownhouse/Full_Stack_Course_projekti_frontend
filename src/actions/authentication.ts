@@ -65,13 +65,23 @@ export const logout = (): IAppAction => {
   };
 };
 
-export const setCurrentUser = (id: string) => {
-  //check if user exists
-  return {
-    type: SET_CURRENT_USER,
-    payload: {
-      isLoggedIn: true,
-      user: id,
-    },
+export const setCurrentUser =
+  (id: string) => async (dispatch: IAppDispatch) => {
+    try {
+      const res = await tripApi.get(`/users/${id}/exists`);
+
+      if (res.data.user) {
+        dispatch({
+          type: SET_CURRENT_USER,
+          payload: {
+            isLoggedIn: true,
+            user: id,
+          },
+        });
+      }
+
+      // eslint-disable-next-line @typescript-eslint/no-explicit-any
+    } catch (err: any) {
+      console.log(err);
+    }
   };
-};

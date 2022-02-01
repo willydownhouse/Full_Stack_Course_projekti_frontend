@@ -2,6 +2,7 @@ import { ITrip } from './trip';
 import { ThunkDispatch } from 'redux-thunk';
 import { IState } from './state';
 import { IReview } from './review';
+import { IAuthObj } from './authentication';
 
 interface BaseAction {
   type: string;
@@ -35,6 +36,10 @@ interface OpenLoginModal extends BaseAction {
   };
 }
 
+interface SetCurrentUserAction extends BaseAction {
+  payload: IAuthObj;
+}
+
 export type LoginPayload = {
   token: string;
   user: string;
@@ -46,6 +51,7 @@ export type IAppAction =
   | MenuAction
   | LoginAction
   | NotificationAction
-  | OpenLoginModal;
+  | OpenLoginModal
+  | SetCurrentUserAction;
 
 export type IAppDispatch = ThunkDispatch<IState, unknown, IAppAction>;

@@ -6,7 +6,7 @@ const bookingReducer = (state = [], action: IAppAction) => {
     case GET_USER_BOOKINGS:
       return action.payload;
     default:
-      return state;
+      return [...state];
   }
 };
 

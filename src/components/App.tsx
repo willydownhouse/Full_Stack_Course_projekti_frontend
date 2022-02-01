@@ -1,6 +1,6 @@
 import React, { useEffect } from 'react';
 
-import { Route, Routes } from 'react-router-dom';
+import { Route, Routes, Navigate } from 'react-router-dom';
 
 import MainPage from './MainPage';
 import MtbTripsPage from './MtbTripsPage';
@@ -11,7 +11,7 @@ import '../css/app.css';
 import Header from './Header';
 import Menu from './Menu';
 import Login from './Login';
-import Booking from './Booking';
+import BookingPage from './BookingPage';
 import MyPage from './MyPage';
 import NoAccessPage from './NoAccessPage';
 import Notification from './Notification';
@@ -21,6 +21,7 @@ import { RootStateOrAny, useDispatch, useSelector } from 'react-redux';
 import { ReduxRouter } from '@lagunovsky/redux-react-router';
 import history from '../history';
 import { setCurrentUser } from '../actions/authentication';
+import Footer from './Footer';
 
 type AppProps = {
   store: RootStateOrAny;
@@ -40,9 +41,9 @@ const App = ({ store }: AppProps) => {
     const local = localStorage.getItem('user');
 
     if (local) {
-      const { user } = JSON.parse(local as string);
+      const { user: id } = JSON.parse(local as string);
 
-      dispatch(setCurrentUser(user));
+      dispatch(setCurrentUser(id));
     }
   }, []);
 
@@ -57,16 +58,16 @@ const App = ({ store }: AppProps) => {
         <Route path="/mtb" element={<MtbTripsPage />} />
         <Route path="/ski" element={<SkiTripsPage />} />
         <Route path="/trips/:id" element={<SingleTripPage />} />
-        <Route
-          path="/booking"
-          element={
-            isLoggedIn ? (
-              <Booking />
-            ) : (
-              <NoAccessPage message="Please log in to get access" />
-            )
-          }
-        />
+        <Route path="/booking">
+          {isLoggedIn ? (
+            <Route index element={<BookingPage />} />
+          ) : (
+            <Route
+              index
+              element={<NoAccessPage message="Please log in to get access" />}
+            />
+          )}
+        </Route>
         <Route
           path="/me"
           element={
@@ -77,7 +78,9 @@ const App = ({ store }: AppProps) => {
             )
           }
         />
+        <Route path="*" element={<NoAccessPage message="Page not found" />} />
       </Routes>
+      <Footer />
     </ReduxRouter>
   );
 };

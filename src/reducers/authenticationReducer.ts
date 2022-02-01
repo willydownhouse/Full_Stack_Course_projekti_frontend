@@ -10,12 +10,11 @@ const initialState: IAuthObj = {
 const authenticationReducer = (state = initialState, action: IAppAction) => {
   switch (action.type) {
     case SET_CURRENT_USER:
-      return action.payload;
+      return action.payload as IAuthObj;
     case LOG_IN:
       localStorage.setItem('user', JSON.stringify(action.payload));
 
       return {
-        ...state,
         isLoggedIn: true,
         user: (action.payload as LoginPayload).user,
       };

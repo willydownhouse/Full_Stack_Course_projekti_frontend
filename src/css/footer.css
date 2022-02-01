@@ -1,5 +1,6 @@
 .footer {
-  background: linear-gradient(rgb(112, 129, 132), rgb(105, 118, 127));
+  background: linear-gradient(#a6a6a6, #d2d2d2);
+  /* background: linear-gradient(rgba(49, 49, 49, 0.9), rgb(74, 74, 74, 1)); */
   height: 12rem;
   display: flex;
   flex-direction: column;
