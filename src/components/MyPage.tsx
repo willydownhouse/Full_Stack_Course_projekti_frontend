@@ -5,6 +5,7 @@ import { getUserBookings } from '../actions/booking';
 import { getUserReviews } from '../actions/review';
 import ReviewList from './ReviewList';
 import BookingsList from './BookingsList';
+import Footer from './Footer';
 
 const MyPage = () => {
   const id = useSelector((state: IState) => state.auth.user);
@@ -18,10 +19,16 @@ const MyPage = () => {
   }, [id]);
 
   return (
-    <div className="container min-vh-100">
-      <h2 className="text-muted mt-5 mb-5">MyPage</h2>
-      <BookingsList />
-      <ReviewList />
+    <div>
+      <div className="min-vh-100">
+        <div className="container">
+          <h2 className="text-muted mt-5 mb-5">MyPage</h2>
+          <BookingsList />
+          <ReviewList />
+        </div>
+      </div>
+
+      <Footer />
     </div>
   );
 };

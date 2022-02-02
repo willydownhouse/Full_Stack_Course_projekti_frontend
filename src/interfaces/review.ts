@@ -1,5 +1,5 @@
 export interface IReview {
-  id: string;
+  _id: string;
   user: {
     name?: {
       first_name: string;

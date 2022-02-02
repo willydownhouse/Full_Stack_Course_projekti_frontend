@@ -6,16 +6,21 @@ import Booking from './Booking';
 
 const BookingsList = () => {
   const bookings: IBooking[] = useSelector((state: IState) => state.bookings);
+
+  const renderBookings = () => {
+    return bookings.map(booking => {
+      return <Booking key={booking._id} booking={booking} />;
+    });
+  };
+
   return (
-    <div>
+    <div id="my-bookings-list">
       <h5 className="text-muted mb-3">My Bookings</h5>
       <ul className="list-group">
         {bookings.length === 0 ? (
           <div>You dont have any bookings</div>
         ) : (
-          bookings.map(booking => (
-            <Booking key={booking.id} booking={booking} />
-          ))
+          renderBookings()
         )}
       </ul>
     </div>

@@ -3,6 +3,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { getAllTrips } from '../actions/trips';
 import { IState } from '../interfaces/state';
 import { ITrip } from '../interfaces/trip';
+import Footer from './Footer';
 import TripShowcase from './TripShowcase';
 import TripsList from './TripsList';
 
@@ -18,6 +19,7 @@ const SkiTripsPage = () => {
     <div>
       <TripShowcase type="Ski" />
       <TripsList trips={trips} />
+      <Footer />
     </div>
   );
 };

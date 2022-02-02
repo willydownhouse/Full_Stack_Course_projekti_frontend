@@ -1,6 +1,6 @@
 import React, { useEffect } from 'react';
 
-import { Route, Routes, Navigate } from 'react-router-dom';
+import { Route, Routes } from 'react-router-dom';
 
 import MainPage from './MainPage';
 import MtbTripsPage from './MtbTripsPage';
@@ -21,7 +21,6 @@ import { RootStateOrAny, useDispatch, useSelector } from 'react-redux';
 import { ReduxRouter } from '@lagunovsky/redux-react-router';
 import history from '../history';
 import { setCurrentUser } from '../actions/authentication';
-import Footer from './Footer';
 
 type AppProps = {
   store: RootStateOrAny;
@@ -34,8 +33,8 @@ const App = ({ store }: AppProps) => {
   console.log('Environment:');
   console.log(process.env.NODE_ENV);
 
-  console.log('isLoggedIn');
-  console.log(isLoggedIn);
+  // console.log('isLoggedIn');
+  // console.log(isLoggedIn);
 
   useEffect(() => {
     const local = localStorage.getItem('user');
@@ -53,6 +52,7 @@ const App = ({ store }: AppProps) => {
       <Menu />
       <Login />
       <Notification />
+
       <Routes>
         <Route path="/" element={<MainPage />} />
         <Route path="/mtb" element={<MtbTripsPage />} />
@@ -80,7 +80,6 @@ const App = ({ store }: AppProps) => {
         />
         <Route path="*" element={<NoAccessPage message="Page not found" />} />
       </Routes>
-      <Footer />
     </ReduxRouter>
   );
 };

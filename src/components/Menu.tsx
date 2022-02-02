@@ -19,7 +19,12 @@ const Menu = () => {
         <MenuLink title="Mtb" to="/mtb" onClick={closeMenu} />
         <MenuLink title="Ski" to="/ski" onClick={closeMenu} />
         {isLoggedIn ? (
-          <MenuLink title="Booking" to="/booking" onClick={closeMenu} />
+          <MenuLink
+            id="menu-booking"
+            title="Booking"
+            to="/booking"
+            onClick={closeMenu}
+          />
         ) : null}
 
         {isLoggedIn ? (
@@ -28,7 +33,7 @@ const Menu = () => {
 
         <li>
           <p
-            id="menu-login"
+            id={isLoggedIn ? 'menu-logout' : 'menu-login'}
             className="link"
             onClick={() => {
               dispatch(closeMenu());

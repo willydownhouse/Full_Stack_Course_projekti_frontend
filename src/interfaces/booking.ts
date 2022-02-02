@@ -1,5 +1,5 @@
 export interface IBooking {
-  id: string;
+  _id: string;
   user: string;
   trip: {
     name: string;

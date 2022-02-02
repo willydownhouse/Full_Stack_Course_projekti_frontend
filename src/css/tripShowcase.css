@@ -16,8 +16,8 @@
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
-  width: 11rem;
-  height: 11rem;
+  width: 18rem;
+  height: 18rem;
   z-index: 5;
 }
 
@@ -32,6 +32,15 @@
 
 @media screen and (max-width: 600px) {
   .trip-logo {
-    transform: translate(-50%, -50%);
+    width: 11rem;
+    height: 11rem;
+  }
+
+  .trip-showcase {
+    height: 70vh;
+  }
+
+  .bg-shading {
+    height: 70vh;
   }
 }
