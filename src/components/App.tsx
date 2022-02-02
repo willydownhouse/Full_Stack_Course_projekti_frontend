@@ -33,8 +33,8 @@ const App = ({ store }: AppProps) => {
   console.log('Environment:');
   console.log(process.env.NODE_ENV);
 
-  // console.log('isLoggedIn');
-  // console.log(isLoggedIn);
+  console.log('isLoggedIn');
+  console.log(isLoggedIn);
 
   useEffect(() => {
     const local = localStorage.getItem('user');

@@ -17,25 +17,23 @@ const initialValues: LoginValues = {
   confirmPassword: '',
 };
 
-const LoginSchema = yup.object().shape(
-  {
-    email: yup.string().email('Invalid email').required('Required'),
-    password: yup
-      .string()
-      .min(6, 'Password at least 6 characters')
-      .required('Required'),
-    confirmPassword: yup
-      .string()
-      .notRequired()
-      .when('confirmPassword', {
+const LoginSchema = () =>
+  yup.object().shape(
+    {
+      email: yup.string().email('Invalid email').required('Required'),
+      password: yup
+        .string()
+        .min(6, 'Password at least 6 characters')
+        .required('Required'),
+      confirmPassword: yup.string().when('confirmPassword', {
         is: (value: string) => value && value.length > 0,
         then: yup
           .string()
           .oneOf([yup.ref('password'), null], 'Passwords must be the same'),
       }),
-  },
-  [['confirmPassword', 'confirmPassword']]
-);
+    },
+    [['confirmPassword', 'confirmPassword']]
+  );
 
 const LoginForm = () => {
   const showSignUp = useSelector(

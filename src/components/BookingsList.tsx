@@ -18,7 +18,7 @@ const BookingsList = () => {
       <h5 className="text-muted mb-3">My Bookings</h5>
       <ul className="list-group">
         {bookings.length === 0 ? (
-          <div>You dont have any bookings</div>
+          <div className="mb-4">You dont have any bookings</div>
         ) : (
           renderBookings()
         )}

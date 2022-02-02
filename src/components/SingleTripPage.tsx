@@ -7,6 +7,8 @@ import { getOneTrip } from '../actions/trips';
 import { getTripsReviews } from '../actions/review';
 import { useParams } from 'react-router-dom';
 import Trip from './Trip';
+import ReviewList from './ReviewList';
+import Footer from './Footer';
 
 const SingleTripPage = () => {
   const dispatch = useDispatch();
@@ -24,8 +26,17 @@ const SingleTripPage = () => {
   console.log('reviews');
   console.log(reviews);
   return (
-    <div className="trips">
-      <Trip trip={trip[0]} />
+    <div className="min-vh-100">
+      <div className="container">
+        <div className="mt-5"></div>
+        <Trip trip={trip[0]} />
+        <ReviewList
+          title="Reviews"
+          messageIfEmpty="Trip does not have reviews yet"
+          showTripTitle={false}
+        />
+      </div>
+      <Footer />
     </div>
   );
 };

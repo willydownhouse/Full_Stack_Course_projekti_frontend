@@ -6,7 +6,12 @@ import { LOG_IN, LOG_OUT, SET_CURRENT_USER } from './types';
 import history from '../history';
 
 export const login =
-  (email: string, password: string) => async (dispatch: IAppDispatch) => {
+  (
+    email: string,
+    password: string,
+    notification = 'You succesfully logged in!'
+  ) =>
+  async (dispatch: IAppDispatch) => {
     try {
       const res = await tripApi.post('/login', {
         email,
@@ -17,7 +22,7 @@ export const login =
         type: LOG_IN,
         payload: res.data,
       });
-      dispatch(setNotification('You succesfully logged in!'));
+      dispatch(setNotification(notification));
       dispatch(closeLogin());
 
       history.push('/me');
@@ -45,7 +50,7 @@ export const signup =
       });
 
       if (res.status === 201) {
-        dispatch(login(email, password));
+        dispatch(login(email, password, 'You succesfully created account!'));
       }
       // eslint-disable-next-line @typescript-eslint/no-explicit-any
     } catch (err: any) {

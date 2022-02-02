@@ -22,9 +22,13 @@ const MyPage = () => {
     <div>
       <div className="min-vh-100">
         <div className="container">
-          <h2 className="text-muted mt-5 mb-5">MyPage</h2>
+          <h3 className="text-muted mt-5 mb-5">MyPage</h3>
           <BookingsList />
-          <ReviewList />
+          <ReviewList
+            title="My Reviews"
+            messageIfEmpty="You have not given any reviews yet"
+            showTripTitle
+          />
         </div>
       </div>
 
