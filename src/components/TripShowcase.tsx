@@ -3,10 +3,10 @@ import { Link } from 'react-router-dom';
 import '../css/tripShowcase.css';
 
 type TripShowcaseProps = {
-  type: string;
+  src: string;
 };
 
-const TripShowcase = ({ type }: TripShowcaseProps) => {
+const TripShowcase = ({ src }: TripShowcaseProps) => {
   const [loaded, setLoaded] = useState(false);
   return (
     <>
@@ -14,7 +14,7 @@ const TripShowcase = ({ type }: TripShowcaseProps) => {
         <img
           onLoad={() => setLoaded(true)}
           className="trip-showcase-img"
-          src={type === 'Ski' ? './img/win1.jpg' : './img/sum1.jpg'}
+          src={src}
         />
         <Link to="/">
           <img className="trip-logo" src="./img/logo.png" />

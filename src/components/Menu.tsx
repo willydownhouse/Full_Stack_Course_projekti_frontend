@@ -40,7 +40,7 @@ const Menu = () => {
               isLoggedIn ? dispatch(logout()) : dispatch(openLogin());
             }}
           >
-            {isLoggedIn ? 'Log out' : 'Log in'}
+            {isLoggedIn ? 'Sign out' : 'Sign in'}
           </p>
         </li>
       </ul>

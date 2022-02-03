@@ -1,87 +1,133 @@
-import React, { FormEvent, SetStateAction, useEffect, useState } from 'react';
-import { Formik, Form, Field, yupToFormErrors } from 'formik';
-import MyFormField from './MyFormField';
+import React, { SetStateAction, useEffect, useState } from 'react';
+import { Formik, Form } from 'formik';
 import { useDispatch, useSelector } from 'react-redux';
 import { getAllTrips } from '../actions/trips';
 import { IState } from '../interfaces/state';
 import { ITrip } from '../interfaces/trip';
 import * as yup from 'yup';
+import FormButton from './FormButton';
 
-// const initialValues = {
-//   trip: '',
-//   //date: '',
-// };
+interface BookingFormValues {
+  trip: string;
+  date: string;
+}
 
-// const BookingSchema = () =>
-//   yup.object().shape({
-//     trip: yup.string().notRequired(),
-//     //date: yup.string().required('Required'),
-//   });
+const initialValues: BookingFormValues = {
+  trip: '',
+  date: '',
+};
+
+const BookingSchema = () =>
+  yup.object().shape({
+    trip: yup.string().required('Required'),
+    date: yup.string().required('Required'),
+  });
 
 const BookingForm = () => {
-  const [selectedTrip, setSelectedTrip] = useState('');
-  const [selectedDate, setSelectedDate] = useState('');
-  const [tripDates, setTripDates] = useState([]);
   const dispatch = useDispatch();
   const trips: ITrip[] = useSelector((state: IState) => state.trips);
+
+  const [dates, setDates] = useState<string[]>([]);
 
   useEffect(() => {
     dispatch(getAllTrips());
   }, []);
 
-  console.log(trips);
+  const handleTripChange = (
+    e: React.ChangeEvent<HTMLSelectElement>,
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
+    setValues: any
+  ) => {
+    setValues({
+      trip: e.target.value,
+      date: '',
+    });
 
-  // eslint-disable-next-line @typescript-eslint/no-explicit-any
-  const handleChange = (e: any) => {
-    setSelectedTrip(e.target.value);
-    const dates = trips.find(trip => trip._id === e.target.value)?.startDates;
+    const trip = trips.find(trip => trip._id === e.target.value)
+      ?.startDates as SetStateAction<string[]>;
 
-    console.log(dates);
-    setTripDates(dates as SetStateAction<never[]>);
+    setDates(trip ? trip : []);
   };
 
   return (
-    <div className="min-vh-100">
+    <div className="mb-5">
       <div className="container">
-        <form
-          onSubmit={e => {
-            e.preventDefault();
-            console.log(selectedTrip);
-            console.log(selectedDate);
+        <Formik
+          onSubmit={(values, { setSubmitting }) => {
+            setSubmitting(true);
+            console.log(values);
+            setSubmitting(false);
           }}
+          initialValues={initialValues}
+          validationSchema={BookingSchema}
         >
-          <div className="mb-1">
-            <label>Trip</label>
-          </div>
+          {({
+            touched,
+            errors,
+            values,
+            setValues,
+            handleChange,
+            isSubmitting,
+          }) => (
+            <Form>
+              <div className="mb-1">
+                <label>Trip</label>
+              </div>
 
-          <div className="mb-3">
-            <select value={selectedTrip} onChange={e => handleChange(e)}>
-              <option value="">Trip</option>
-              {trips.map(trip => (
-                <option key={trip._id} value={trip._id}>
-                  {trip.name}
-                </option>
-              ))}
-            </select>
-          </div>
+              <div className="mb-2">
+                <select
+                  name="trip"
+                  value={values.trip}
+                  onChange={e => handleTripChange(e, setValues)}
+                  className={`form-control ${
+                    touched.trip && errors.trip ? 'is-invalid' : ''
+                  }`}
+                >
+                  <option value=""></option>
+                  {trips.map(trip => (
+                    <option key={trip._id} value={trip._id}>
+                      {trip.name}
+                    </option>
+                  ))}
+                </select>
+                {touched.trip && errors.trip && (
+                  <div className="text-danger">{errors.trip}</div>
+                )}
+              </div>
 
-          <div className="mb-3">
-            <select
-              value={selectedDate}
-              onChange={e => setSelectedDate(e.target.value)}
-            >
-              <option value="">Date</option>
-              {tripDates.map(date => {
-                return (
-                  <option key={date} value={date}>
-                    {date}
-                  </option>
-                );
-              })}
-            </select>
-          </div>
-          <button className="button btn-small">Submit</button>
-        </form>
+              <div className="mb-1">
+                <label>Date</label>
+              </div>
+
+              <div className="mb-4">
+                <select
+                  name="date"
+                  value={values.date}
+                  onChange={handleChange}
+                  className={`form-control ${
+                    touched.date && errors.date ? 'is-invalid' : ''
+                  }`}
+                >
+                  <option value=""></option>
+                  {dates.map(date => (
+                    <option key={date} value={date}>
+                      {date}
+                    </option>
+                  ))}
+                </select>
+                {errors.date && touched.date && (
+                  <div className="text-danger">{errors.date}</div>
+                )}
+              </div>
+
+              <FormButton
+                id="btn-booking"
+                disabled={isSubmitting}
+                btnText="Submit"
+              />
+            </Form>
+          )}
+        </Formik>
       </div>
     </div>
   );

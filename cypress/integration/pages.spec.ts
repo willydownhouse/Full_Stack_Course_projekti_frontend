@@ -41,7 +41,7 @@ describe('Navigation after LOGIN', () => {
     cy.get('#burger-menu').click();
     cy.get('#menu-booking').click();
 
-    cy.contains('Bookings');
+    cy.contains('Book');
   });
   it('Back to front page after logout', () => {
     cy.get('#burger-menu').click();

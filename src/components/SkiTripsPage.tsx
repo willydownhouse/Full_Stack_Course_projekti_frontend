@@ -17,7 +17,7 @@ const SkiTripsPage = () => {
 
   return (
     <div>
-      <TripShowcase type="Ski" />
+      <TripShowcase src="./img/win1.jpg" />
       <TripsList trips={trips} />
       <Footer />
     </div>

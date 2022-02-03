@@ -1,5 +1,6 @@
 import tripApi from '../api/tripApi';
 import { IAppDispatch } from '../interfaces/actions';
+import { removeNotification, setNotification } from './notification';
 import { GET_USER_BOOKINGS } from './types';
 
 export const getUserBookings =
@@ -24,5 +25,9 @@ export const getUserBookings =
       // eslint-disable-next-line @typescript-eslint/no-explicit-any
     } catch (err: any) {
       console.log(err);
+      dispatch(setNotification(err.response.data.message));
+      setTimeout(() => {
+        dispatch(removeNotification());
+      }, 3000);
     }
   };

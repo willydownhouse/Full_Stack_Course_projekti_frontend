@@ -17,7 +17,7 @@ const MtbTripsPage = () => {
 
   return (
     <div>
-      <TripShowcase type="Mtb" />
+      <TripShowcase src="./img/sum1.jpg" />
       <TripsList trips={trips} />
       <Footer />
     </div>
