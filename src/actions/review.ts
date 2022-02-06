@@ -16,8 +16,8 @@ export const getUserReviews =
   (id: string) => async (dispatch: IAppDispatch) => {
     const res = await tripApi.get(`/reviews?user=${id}`);
 
-    console.log('User reviews');
-    console.log(res.data.reviews);
+    // console.log('User reviews');
+    // console.log(res.data.reviews);
 
     dispatch({
       type: GET_USER_REVIEWS,

@@ -28,7 +28,12 @@ const Menu = () => {
         ) : null}
 
         {isLoggedIn ? (
-          <MenuLink title="My page" to="/me" onClick={closeMenu} />
+          <MenuLink
+            id="menu-mypage"
+            title="My page"
+            to="/me"
+            onClick={closeMenu}
+          />
         ) : null}
 
         <li>

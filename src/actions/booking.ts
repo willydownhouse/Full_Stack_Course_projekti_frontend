@@ -20,8 +20,8 @@ export const getUserBookings =
         type: GET_USER_BOOKINGS,
         payload: res.data.bookings,
       });
-      console.log('user bookings:');
-      console.log(res.data.bookings);
+      // console.log('user bookings:');
+      // console.log(res.data.bookings);
       // eslint-disable-next-line @typescript-eslint/no-explicit-any
     } catch (err: any) {
       console.log(err);

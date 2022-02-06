@@ -43,6 +43,12 @@ describe('Navigation after LOGIN', () => {
 
     cy.contains('Book');
   });
+  it('My page accessible after login', () => {
+    cy.get('#burger-menu').click();
+    cy.get('#menu-mypage').click();
+
+    cy.contains('MyPage');
+  });
   it('Back to front page after logout', () => {
     cy.get('#burger-menu').click();
     cy.get('#menu-logout').click();

@@ -22,7 +22,7 @@ const MyPage = () => {
   return (
     <div>
       <div className="min-vh-100">
-        <TripShowcase src="./img/win2.jpg" />
+        <TripShowcase src="./img/lyngen2.jpg" />
         <div className="container">
           <h3 className="text-muted mt-5 mb-5">MyPage</h3>
           <BookingsList />
