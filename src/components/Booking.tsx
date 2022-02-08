@@ -14,7 +14,10 @@ const Booking = ({ booking }: BookingProps) => {
           <h6 className="card-subtitle mb-3 text-muted">{booking.trip_date}</h6>
           <p className="card-text">
             <strong>Status: </strong>
-            {booking.status}
+            {booking.status}{' '}
+            {new Date(booking.createdAt)
+              .toLocaleDateString('fi-FI')
+              .replaceAll('.', '/')}
           </p>
         </div>
       </div>

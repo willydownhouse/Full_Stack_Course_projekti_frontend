@@ -4,13 +4,10 @@ import { useDispatch, useSelector } from 'react-redux';
 import { getAllTrips } from '../actions/trips';
 import { IState } from '../interfaces/state';
 import { ITrip } from '../interfaces/trip';
+import { BookingFormValues } from '../interfaces/booking';
 import * as yup from 'yup';
 import FormButton from './FormButton';
-
-interface BookingFormValues {
-  trip: string;
-  date: string;
-}
+import { book } from '../actions/booking';
 
 const initialValues: BookingFormValues = {
   trip: '',
@@ -53,10 +50,11 @@ const BookingForm = () => {
     <div className="mb-5">
       <div className="container">
         <Formik
-          onSubmit={(values, { setSubmitting }) => {
+          onSubmit={(values, { setSubmitting, resetForm }) => {
             setSubmitting(true);
-            console.log(values);
+            dispatch(book(values));
             setSubmitting(false);
+            resetForm();
           }}
           initialValues={initialValues}
           validationSchema={BookingSchema}
@@ -76,6 +74,7 @@ const BookingForm = () => {
 
               <div className="mb-2">
                 <select
+                  id="trip-dropdown"
                   name="trip"
                   value={values.trip}
                   onChange={e => handleTripChange(e, setValues)}
@@ -84,8 +83,8 @@ const BookingForm = () => {
                   }`}
                 >
                   <option value=""></option>
-                  {trips.map(trip => (
-                    <option key={trip._id} value={trip._id}>
+                  {trips.map((trip, i) => (
+                    <option id={`trip-${i}`} key={trip._id} value={trip._id}>
                       {trip.name}
                     </option>
                   ))}
@@ -101,6 +100,7 @@ const BookingForm = () => {
 
               <div className="mb-4">
                 <select
+                  id="date-dropdown"
                   name="date"
                   value={values.date}
                   onChange={handleChange}
@@ -109,8 +109,8 @@ const BookingForm = () => {
                   }`}
                 >
                   <option value=""></option>
-                  {dates.map(date => (
-                    <option key={date} value={date}>
+                  {dates.map((date, i) => (
+                    <option id={`date-${i}`} key={date} value={date}>
                       {date}
                     </option>
                   ))}

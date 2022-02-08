@@ -8,3 +8,8 @@ export interface IBooking {
   createdAt: Date;
   status: string;
 }
+
+export interface BookingFormValues {
+  trip: string;
+  date: string;
+}
