@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
+
 import '../css/tripShowcase.css';
 
 type TripShowcaseProps = {
@@ -8,6 +9,7 @@ type TripShowcaseProps = {
 
 const TripShowcase = ({ src }: TripShowcaseProps) => {
   const [loaded, setLoaded] = useState(false);
+
   return (
     <>
       <div className={`trip-showcase ${loaded ? 'visible-anim' : ''}`}>
@@ -19,7 +21,6 @@ const TripShowcase = ({ src }: TripShowcaseProps) => {
         <Link to="/">
           <img className="trip-logo" src="./img/logo.png" />
         </Link>
-
         <div className="bg-shading"></div>
       </div>
     </>

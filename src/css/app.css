@@ -89,6 +89,12 @@ p {
   animation: showNotification 0.4s forwards;
 }
 
+.flex-center {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
 @keyframes showNotification {
   0% {
     opacity: 0;

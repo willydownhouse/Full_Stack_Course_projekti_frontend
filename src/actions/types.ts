@@ -4,6 +4,7 @@ export const GET_ONE_TRIP = 'GET_ONE_TRIP';
 export const GET_TRIP_REVIEWS = 'GET_TRIP_REVIEWS';
 
 export const GET_USER_BOOKINGS = 'GET_USER_BOOKINGS';
+export const CANCEL_BOOKING = 'CANCEL_BOOKING';
 export const GET_USER_REVIEWS = 'GET_USER_REVIEWS';
 
 export const OPEN_MENU = 'OPEN_MENU';

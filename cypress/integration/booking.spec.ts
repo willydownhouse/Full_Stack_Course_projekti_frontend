@@ -25,4 +25,25 @@ describe('Booking tests', () => {
       'You have already booked this trip with this date, please choose another trip or date'
     );
   });
+  it('Booking OK', () => {
+    cy.get('#burger-menu').click();
+    cy.get('#menu-booking').click();
+
+    cy.get('#trip-dropdown').select('Lyngen ski week');
+
+    cy.get('#date-dropdown').select('9/4/22');
+
+    cy.get('#btn-booking').click();
+
+    cy.contains('MyPage');
+    cy.get('#my-bookings-list').contains('Lyngen ski week');
+  });
+  it('Delete booking', () => {
+    cy.get('#burger-menu').click();
+    cy.get('#menu-mypage').click();
+
+    cy.get('#btn-cancel-0').click();
+
+    cy.contains('You succesfully deleted your booking');
+  });
 });

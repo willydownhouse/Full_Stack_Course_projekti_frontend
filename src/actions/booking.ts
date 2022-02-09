@@ -2,8 +2,11 @@ import tripApi from '../api/tripApi';
 import { IAppDispatch } from '../interfaces/actions';
 import { BookingFormValues } from '../interfaces/booking';
 import { removeNotification, setNotification } from './notification';
-import { GET_USER_BOOKINGS } from './types';
-import { getTokenFromLocalStorage } from '../utils/token';
+import { CANCEL_BOOKING, GET_USER_BOOKINGS } from './types';
+import {
+  getTokenFromLocalStorage,
+  getUserIdFromLocalStorage,
+} from '../utils/localStorage';
 import history from '../history';
 
 export const getUserBookings =
@@ -21,8 +24,8 @@ export const getUserBookings =
         type: GET_USER_BOOKINGS,
         payload: res.data.bookings,
       });
-      // console.log('user bookings:');
-      // console.log(res.data.bookings);
+      console.log('user bookings:');
+      console.log(res.data.bookings);
       // eslint-disable-next-line @typescript-eslint/no-explicit-any
     } catch (err: any) {
       console.log(err);
@@ -66,3 +69,36 @@ export const book =
       }, 5000);
     }
   };
+
+export const cancelBooking = (id: string) => async (dispatch: IAppDispatch) => {
+  try {
+    const token = getTokenFromLocalStorage();
+    await tripApi.delete(`/bookings/${id}`, {
+      headers: {
+        Authorization: `Bearer ${token}`,
+      },
+    });
+
+    dispatch({
+      type: CANCEL_BOOKING,
+      payload: id,
+    });
+
+    const userId = getUserIdFromLocalStorage();
+
+    dispatch(getUserBookings(userId));
+
+    dispatch(setNotification('You succesfully deleted your booking'));
+    setTimeout(() => {
+      dispatch(removeNotification());
+    }, 3000);
+
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  } catch (err: any) {
+    console.log(err);
+    dispatch(setNotification(err.response.data.message));
+    setTimeout(() => {
+      dispatch(removeNotification());
+    }, 3000);
+  }
+};

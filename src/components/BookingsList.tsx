@@ -8,8 +8,8 @@ const BookingsList = () => {
   const bookings: IBooking[] = useSelector((state: IState) => state.bookings);
 
   const renderBookings = () => {
-    return bookings.map(booking => {
-      return <Booking key={booking._id} booking={booking} />;
+    return bookings.map((booking, i) => {
+      return <Booking key={booking._id} booking={booking} index={i} />;
     });
   };
 
