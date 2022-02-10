@@ -56,7 +56,7 @@ export const book =
 
       if (res.status === 201) {
         history.push('/me');
-        dispatch(setNotification('You succesfully booked a trip'));
+        dispatch(setNotification('Thank you for your booking'));
         setTimeout(() => {
           dispatch(removeNotification());
         }, 3000);
@@ -88,7 +88,7 @@ export const cancelBooking = (id: string) => async (dispatch: IAppDispatch) => {
 
     dispatch(getUserBookings(userId));
 
-    dispatch(setNotification('You succesfully deleted your booking'));
+    dispatch(setNotification('You succesfully cancelled your booking'));
     setTimeout(() => {
       dispatch(removeNotification());
     }, 3000);

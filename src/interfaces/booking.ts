@@ -3,6 +3,7 @@ export interface IBooking {
   user: string;
   trip: {
     name: string;
+    price: number;
   };
   trip_date: string;
   createdAt: Date;
@@ -12,4 +13,9 @@ export interface IBooking {
 export interface BookingFormValues {
   trip: string;
   date: string;
+}
+
+export interface BookedTrip {
+  name: string;
+  price: number;
 }

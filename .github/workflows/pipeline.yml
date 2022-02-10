@@ -28,6 +28,7 @@ jobs:
         run: npm run build
         env:
           REACT_APP_API_PROD_URL: https://powerful-mountain-41188.herokuapp.com/api
+          REACT_APP_STRIPE_KEY: ${{secrets.REACT_APP_STRIPE_KEY}}
 
       - name: install serve for running production build
         run: npm install -g serve
@@ -40,6 +41,7 @@ jobs:
           wait-on: http://localhost:3000
         env:
           CYPRESS_REACT_APP_API_PROD_URL: https://powerful-mountain-41188.herokuapp.com/api
+          CYPRESS_REACT_APP_STRIPE_KEY: ${{secrets.REACT_APP_STRIPE_KEY}}
 
       - name: debloy
         if: ${{ github.event_name == 'push' && !contains(github.event.head_commit.message, 'skip')}}
@@ -50,3 +52,4 @@ jobs:
           heroku_email: 'ville.l.alatalo@gmail.com'
         env:
           HD_REACT_APP_API_PROD_URL: https://powerful-mountain-41188.herokuapp.com/api
+          HD_REACT_APP_STRIPE_KEY: ${{secrets.REACT_APP_STRIPE_KEY}}

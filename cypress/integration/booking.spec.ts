@@ -44,6 +44,6 @@ describe('Booking tests', () => {
 
     cy.get('#btn-cancel-0').click();
 
-    cy.contains('You succesfully deleted your booking');
+    cy.contains('You succesfully cancelled your booking');
   });
 });
