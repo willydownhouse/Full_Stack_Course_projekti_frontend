@@ -29,6 +29,7 @@ const Booking = ({ booking, index }: BookingProps) => {
         {
           name: booking.trip.name,
           price: booking.trip.price,
+          bookingId: booking._id,
         },
         token
       )
@@ -46,13 +47,15 @@ const Booking = ({ booking, index }: BookingProps) => {
             <p className="card-text">
               <strong>Status: </strong>
               {booking.status}{' '}
-              {new Date(booking.createdAt)
-                .toLocaleDateString('fi-FI')
-                .replaceAll('.', '/')}
+              {booking.status === 'booked'
+                ? new Date(booking.createdAt)
+                    .toLocaleDateString('fi-FI')
+                    .replaceAll('.', '/')
+                : null}
             </p>
           </div>
         </div>
-        <div className="">
+        <div className="ml-3">
           <button
             id={`btn-cancel-${index}`}
             className="btn btn-outline-primary btn-sm mr-5"
@@ -60,14 +63,17 @@ const Booking = ({ booking, index }: BookingProps) => {
           >
             Cancel
           </button>
-
-          <StripeCheckout
-            stripeKey={process.env.REACT_APP_STRIPE_KEY as string}
-            token={handleToken}
-            billingAddress
-            shippingAddress
-            amount={399 * 100}
-          />
+          {booking.status === 'booked' ? (
+            <span className={`btn-pay-${index}`}>
+              <StripeCheckout
+                stripeKey={process.env.REACT_APP_STRIPE_KEY as string}
+                token={handleToken}
+                billingAddress
+                shippingAddress
+                amount={booking.trip.price * 100}
+              />
+            </span>
+          ) : null}
         </div>
       </div>
     </li>

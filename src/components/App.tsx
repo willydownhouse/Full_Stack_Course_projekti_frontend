@@ -30,8 +30,8 @@ const App = ({ store }: AppProps) => {
   const isLoggedIn = useSelector((state: IState) => state.auth.isLoggedIn);
   const dispatch = useDispatch();
 
-  console.log('Environment:');
-  console.log(process.env.NODE_ENV);
+  // console.log('Environment:');
+  // console.log(process.env.NODE_ENV);
 
   // console.log('isLoggedIn');
   // console.log(isLoggedIn);

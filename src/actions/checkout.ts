@@ -2,14 +2,18 @@ import { Token } from 'react-stripe-checkout';
 import tripApi from '../api/tripApi';
 import { IAppDispatch } from '../interfaces/actions';
 import { BookedTrip } from '../interfaces/booking';
-import { getTokenFromLocalStorage } from '../utils/localStorage';
+import {
+  getTokenFromLocalStorage,
+  getUserIdFromLocalStorage,
+} from '../utils/localStorage';
+import { getUserBookings } from './booking';
 import { removeNotification, setNotification } from './notification';
 
 export const pay =
   (bookedTrip: BookedTrip, token: Token) => async (dispatch: IAppDispatch) => {
     try {
       const tokenFromLocalStorage = getTokenFromLocalStorage();
-      await tripApi.post(
+      const res = await tripApi.post(
         '/checkout',
         {
           token,
@@ -22,7 +26,14 @@ export const pay =
         }
       );
 
+      console.log(res);
+
       dispatch(setNotification('Succesfull payment, thank you!'));
+
+      const id = getUserIdFromLocalStorage();
+
+      dispatch(getUserBookings(id));
+
       setTimeout(() => {
         dispatch(removeNotification());
       }, 3000);

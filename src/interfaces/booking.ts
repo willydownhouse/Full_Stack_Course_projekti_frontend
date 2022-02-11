@@ -18,4 +18,5 @@ export interface BookingFormValues {
 export interface BookedTrip {
   name: string;
   price: number;
+  bookingId: string;
 }
