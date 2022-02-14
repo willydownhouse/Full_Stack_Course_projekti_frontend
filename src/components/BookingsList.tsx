@@ -3,7 +3,6 @@ import { useSelector } from 'react-redux';
 import { IBooking } from '../interfaces/booking';
 import { IState } from '../interfaces/state';
 import Booking from './Booking';
-import Spinner from './Spinner';
 
 const BookingsList = () => {
   const bookings: IBooking[] = useSelector((state: IState) => state.bookings);
