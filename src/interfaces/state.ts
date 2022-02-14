@@ -18,4 +18,14 @@ export interface IState {
   auth: IAuthObj;
   notification: string | null;
   error: string | null;
+  router: {
+    location: {
+      pathname: string;
+      search: string;
+      hash: string;
+      state?: string | null;
+      key: string;
+    };
+    action: string;
+  };
 }

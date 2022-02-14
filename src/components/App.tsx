@@ -29,12 +29,15 @@ type AppProps = {
 const App = ({ store }: AppProps) => {
   const isLoggedIn = useSelector((state: IState) => state.auth.isLoggedIn);
   const dispatch = useDispatch();
+  const location = useSelector(
+    (state: IState) => state.router.location.pathname
+  );
 
   // console.log('Environment:');
   // console.log(process.env.NODE_ENV);
 
-  // console.log('isLoggedIn');
-  // console.log(isLoggedIn);
+  console.log('isLoggedIn:');
+  console.log(isLoggedIn);
 
   useEffect(() => {
     const local = localStorage.getItem('user');
@@ -42,7 +45,7 @@ const App = ({ store }: AppProps) => {
     if (local) {
       const { user: id } = JSON.parse(local as string);
 
-      dispatch(setCurrentUser(id));
+      dispatch(setCurrentUser(id, location));
     }
   }, []);
 
@@ -58,26 +61,27 @@ const App = ({ store }: AppProps) => {
         <Route path="/mtb" element={<MtbTripsPage />} />
         <Route path="/ski" element={<SkiTripsPage />} />
         <Route path="/trips/:id" element={<SingleTripPage />} />
-        <Route path="/booking">
-          {isLoggedIn ? (
-            <Route index element={<BookingPage />} />
-          ) : (
-            <Route
-              index
-              element={<NoAccessPage message="Please log in to get access" />}
-            />
-          )}
-        </Route>
+        <Route
+          path="/booking"
+          element={
+            isLoggedIn ? (
+              <BookingPage />
+            ) : (
+              <NoAccessPage message="Please login to get access" />
+            )
+          }
+        />
         <Route
           path="/me"
           element={
             isLoggedIn ? (
               <MyPage />
             ) : (
-              <NoAccessPage message="Please log in to get access" />
+              <NoAccessPage message="Please login to get access" />
             )
           }
         />
+
         <Route path="*" element={<NoAccessPage message="Page not found" />} />
       </Routes>
     </ReduxRouter>

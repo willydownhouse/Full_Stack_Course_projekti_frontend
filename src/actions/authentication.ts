@@ -71,7 +71,7 @@ export const logout = (): IAppAction => {
 };
 
 export const setCurrentUser =
-  (id: string) => async (dispatch: IAppDispatch) => {
+  (id: string, location: string) => async (dispatch: IAppDispatch) => {
     try {
       const res = await tripApi.get(`/users/${id}/exists`);
 
@@ -83,6 +83,8 @@ export const setCurrentUser =
             user: id,
           },
         });
+
+        history.push(location);
       }
 
       // eslint-disable-next-line @typescript-eslint/no-explicit-any
