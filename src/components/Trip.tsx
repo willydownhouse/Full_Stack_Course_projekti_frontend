@@ -4,6 +4,7 @@ import { TripProps } from '../types/tripProps';
 import '../css/trip.css';
 import { useSelector } from 'react-redux';
 import { IState } from '../interfaces/state';
+import StarRatingComponent from 'react-star-rating-component';
 
 const Trip = ({ trip }: TripProps) => {
   const isLoggedIn = useSelector((state: IState) => state.auth.isLoggedIn);
@@ -32,7 +33,17 @@ const Trip = ({ trip }: TripProps) => {
         </div>
         <div className="grid-details">
           <h6 className="max-size">Groupsize {trip.maxGroupSize}</h6>
-          <h6 className="rating">Rating {trip.reviewAverage}</h6>
+          <div>
+            <h6 className="">Rating</h6>
+            <div className="rating">
+              <StarRatingComponent
+                name="Rating"
+                value={trip.reviewAverage as number}
+                starColor="#ebd921"
+                emptyStarColor="#dbdad4"
+              />
+            </div>
+          </div>
         </div>
         <div className="grid-start">
           <h6 className="dates-title">Next weeks</h6>

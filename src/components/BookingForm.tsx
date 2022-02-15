@@ -124,6 +124,7 @@ const BookingForm = () => {
                 id="btn-booking"
                 disabled={isSubmitting}
                 btnText="Submit"
+                style="button btn-extra-small"
               />
             </Form>
           )}

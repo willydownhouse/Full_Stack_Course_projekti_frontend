@@ -2,18 +2,18 @@ import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { IState } from '../interfaces/state';
 import { ITrip } from '../interfaces/trip';
-import { IReview } from '../interfaces/review';
+
 import { getOneTrip } from '../actions/trips';
 import { getTripsReviews } from '../actions/review';
 import { useParams } from 'react-router-dom';
 import Trip from './Trip';
 import ReviewList from './ReviewList';
 import Footer from './Footer';
+import Spinner from './Spinner';
 
 const SingleTripPage = () => {
   const dispatch = useDispatch();
   const trip: ITrip[] = useSelector((state: IState) => state.trips);
-  const reviews: IReview[] = useSelector((state: IState) => state.reviews);
   const { id } = useParams();
 
   useEffect(() => {
@@ -21,10 +21,8 @@ const SingleTripPage = () => {
     dispatch(getTripsReviews(id as string));
   }, []);
 
-  console.log('trip');
-  console.log(trip);
-  console.log('reviews');
-  console.log(reviews);
+  if (trip.length === 0 || trip.length > 1) return <Spinner />;
+
   return (
     <div className="min-vh-100">
       <div className="container">

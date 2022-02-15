@@ -91,6 +91,7 @@ const LoginForm = () => {
               id={showSignUp ? 'signup' : 'signin'}
               btnText={showSignUp ? 'Sign up' : 'Sign in'}
               disabled={isSubmitting}
+              style="btn btn-primary"
             />
             {showSignUp ? null : (
               <SignUp

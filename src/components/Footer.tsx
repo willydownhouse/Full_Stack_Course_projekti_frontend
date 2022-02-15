@@ -6,7 +6,7 @@ const Footer = () => {
   return (
     <div className="footer">
       <div className="footer-links">
-        <ul>
+        <ul className="footer-list">
           <li>
             <i className="fab fa-instagram"></i>
           </li>

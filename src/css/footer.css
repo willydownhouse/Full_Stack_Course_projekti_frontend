@@ -1,14 +1,21 @@
 .footer {
   background: linear-gradient(#a6a6a6, #d2d2d2);
-  /* background: linear-gradient(rgba(49, 49, 49, 0.9), rgb(74, 74, 74, 1)); */
-  height: 12rem;
+
+  height: 10rem;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
 }
 
+.footer-list {
+  display: flex;
+  align-items: center;
+
+  padding: 0;
+}
+
 .footer i {
-  font-size: 3rem;
-  margin: 1rem 2rem;
+  font-size: 2.5rem;
+  padding: 0 1rem;
 }

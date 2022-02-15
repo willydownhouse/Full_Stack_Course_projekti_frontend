@@ -18,7 +18,7 @@ const SignUp = ({ onClick, btnText, text, id }: SignUpProps) => {
           id={id}
           type="button"
           onClick={() => dispatch(onClick())}
-          className="btn btn-primary btn-sm mr-2"
+          className="button btn-extra-small mr-2"
         >
           {btnText}
         </button>
@@ -27,5 +27,6 @@ const SignUp = ({ onClick, btnText, text, id }: SignUpProps) => {
     </div>
   );
 };
+//btn btn-primary btn-sm
 
 export default SignUp;

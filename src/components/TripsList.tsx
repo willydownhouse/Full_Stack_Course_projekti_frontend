@@ -12,9 +12,6 @@ const TripsList = ({ trips }: TripListProps) => {
     });
   };
 
-  console.log('trips:');
-  console.log(trips);
-
   if (trips.length === 0) return <Spinner />;
 
   return <div className="trips">{renderTrips()}</div>;
