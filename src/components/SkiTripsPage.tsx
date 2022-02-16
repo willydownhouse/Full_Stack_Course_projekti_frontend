@@ -4,6 +4,7 @@ import { getAllTrips } from '../actions/trips';
 import { IState } from '../interfaces/state';
 import { ITrip } from '../interfaces/trip';
 import Footer from './Footer';
+
 import TripShowcase from './TripShowcase';
 import TripsList from './TripsList';
 
@@ -19,6 +20,7 @@ const SkiTripsPage = () => {
     <div>
       <TripShowcase src="./img/win1.jpg" />
       <TripsList trips={trips} />
+
       <Footer />
     </div>
   );

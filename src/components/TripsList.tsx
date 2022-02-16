@@ -7,8 +7,8 @@ import Spinner from './Spinner';
 
 const TripsList = ({ trips }: TripListProps) => {
   const renderTrips = () => {
-    return trips.map(trip => {
-      return <Trip key={trip._id} trip={trip} />;
+    return trips.map((trip, i) => {
+      return <Trip key={trip._id} trip={trip} index={i} />;
     });
   };
 

@@ -27,7 +27,7 @@ const SingleTripPage = () => {
     <div className="min-vh-100">
       <div className="container">
         <div className="mt-5"></div>
-        <Trip trip={trip[0]} />
+        <Trip trip={trip[0]} index={0} />
         <ReviewList
           title="Reviews"
           messageIfEmpty="Trip does not have reviews yet"

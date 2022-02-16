@@ -2,8 +2,12 @@
   display: grid;
   grid-template-columns: 1fr 1fr;
   grid-template-rows: 0.5fr 3fr 1.4fr 0.5fr;
-  margin-bottom: 3rem;
 }
+
+.no-booking-btn {
+  grid-template-rows: 0.5fr 3fr 1.4fr;
+}
+
 .grid-title {
   grid-column: 1/2;
   grid-row: 1/2;
@@ -72,6 +76,10 @@
   .grid {
     grid-template-columns: 100%;
     grid-template-rows: 0.5fr 2fr 2fr 0.5fr 0.5fr 0.5fr;
+  }
+
+  .no-booking-btn {
+    grid-template-rows: 0.5fr 2fr 2fr 0.5fr 0.5fr;
   }
 
   .grid-img-cont {

@@ -19,7 +19,7 @@ describe('Login/Sign up', () => {
 
     cy.get('#confirmPassword').should('be.visible');
   });
-  it('Succesfull login opens  my page', () => {
+  it('Succesfull login on Home page opens my page', () => {
     cy.get('#burger-menu').click();
     cy.get('#menu-login').click();
 
@@ -69,5 +69,28 @@ describe('Login/Sign up', () => {
     cy.get('#signup').click();
 
     cy.contains('Please confirm your password');
+  });
+});
+
+describe('Login on MTB trips page opens same page', () => {
+  beforeEach(() => {
+    cy.visit('http://localhost:3000/mtb');
+  });
+
+  it('Before login there is no book -buttons', () => {
+    cy.get('#booking-0').should('not.exist');
+    cy.get('#booking-1').should('not.exist');
+  });
+  it('After succesfull login there is book -buttons', () => {
+    cy.get('#burger-menu').click();
+    cy.get('#menu-login').click();
+
+    cy.get('#email').type('Ville@test.fi');
+    cy.get('#password').type('test1234');
+
+    cy.get('#signin').click();
+
+    cy.get('#booking-0').should('exist');
+    cy.get('#booking-1').should('exist');
   });
 });

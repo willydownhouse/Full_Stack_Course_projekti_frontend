@@ -16,7 +16,7 @@ const Footer = () => {
         </ul>
       </div>
       <div>
-        <h6>&copy; Copyright willydownhouse</h6>
+        <h6>&copy; 2022 willydownhouse, Inc.</h6>
       </div>
     </div>
   );

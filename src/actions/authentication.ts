@@ -1,5 +1,5 @@
 import tripApi from '../api/tripApi';
-import { IAppAction, IAppDispatch } from '../interfaces/actions';
+import { IAppDispatch } from '../interfaces/actions';
 import { closeLogin } from './logInModal';
 import { removeNotification, setNotification } from './notification';
 import { LOG_IN, LOG_OUT, SET_CURRENT_USER } from './types';
@@ -9,6 +9,7 @@ export const login =
   (
     email: string,
     password: string,
+    location: string,
     notification = 'You succesfully logged in!'
   ) =>
   async (dispatch: IAppDispatch) => {
@@ -25,7 +26,7 @@ export const login =
       dispatch(setNotification(notification));
       dispatch(closeLogin());
 
-      history.push('/me');
+      location === '/' ? history.push('/me') : history.push(location);
 
       setTimeout(() => {
         dispatch(removeNotification());
@@ -61,13 +62,18 @@ export const signup =
     }
   };
 
-export const logout = (): IAppAction => {
+export const logout = () => (dispatch: IAppDispatch) => {
   history.push('/');
 
-  return {
+  dispatch(setNotification('You logged out!'));
+  setTimeout(() => {
+    dispatch(removeNotification());
+  }, 3000);
+
+  dispatch({
     type: LOG_OUT,
     payload: null,
-  };
+  });
 };
 
 export const setCurrentUser =

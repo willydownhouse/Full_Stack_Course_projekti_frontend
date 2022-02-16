@@ -6,7 +6,7 @@ import { useSelector } from 'react-redux';
 import { IState } from '../interfaces/state';
 import StarRatingComponent from 'react-star-rating-component';
 
-const Trip = ({ trip }: TripProps) => {
+const Trip = ({ trip, index }: TripProps) => {
   const isLoggedIn = useSelector((state: IState) => state.auth.isLoggedIn);
   const renderDates = (dates: string[] = []) => {
     return dates.map(date => {
@@ -18,8 +18,8 @@ const Trip = ({ trip }: TripProps) => {
     });
   };
   return (
-    <div key={trip._id}>
-      <div className="grid">
+    <div key={trip._id} className="mb-5">
+      <div className={`grid ${isLoggedIn ? '' : 'no-booking-btn'}`}>
         <div className="grid-title">
           <Link to={`/trips/${trip._id}`}>
             <h3 className="card-title">{trip.name}</h3>
@@ -55,13 +55,16 @@ const Trip = ({ trip }: TripProps) => {
             <h5>{`${trip.price}e`}</h5>
           </div>
         </div>
-        <div className="booking">
-          {isLoggedIn ? (
+
+        {isLoggedIn ? (
+          <div className="booking">
             <Link to="/booking">
-              <button className="button btn-grey">Book</button>
+              <button id={`booking-${index}`} className="button btn-grey">
+                Book
+              </button>
             </Link>
-          ) : null}
-        </div>
+          </div>
+        ) : null}
       </div>
     </div>
   );

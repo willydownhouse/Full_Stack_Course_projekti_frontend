@@ -39,6 +39,10 @@ const LoginForm = () => {
   const showSignUp = useSelector(
     (state: IState) => state.logInModal.signUpForm
   );
+  const location = useSelector(
+    (state: IState) => state.router.location.pathname
+  );
+
   const dispatch = useDispatch();
   return (
     <>
@@ -50,7 +54,7 @@ const LoginForm = () => {
         ) => {
           showSignUp
             ? dispatch(signup(email, password, confirmPassword as string))
-            : dispatch(login(email, password));
+            : dispatch(login(email, password, location));
 
           resetForm();
         }}
