@@ -2,6 +2,12 @@ App running:
 
 https://tranquil-beyond-71839.herokuapp.com/
 
+Backend repo:
+
+https://github.com/willydownhouse/Full_Stack_Course_projekti_backend
+
+Sovellus Adventure Buddy myy opastettuja maastopyöräily- ja laskettelumatkoja. Varauksen tehdäkseen täytyy ensin luoda tili ja kirjautua sisään. Stripellä hoituu varauksen maksaminen.
+
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
