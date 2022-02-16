@@ -33,9 +33,6 @@ const App = ({ store }: AppProps) => {
     (state: IState) => state.router.location.pathname
   );
 
-  // console.log('Environment:');
-  // console.log(process.env.NODE_ENV);
-
   useEffect(() => {
     const local = localStorage.getItem('user');
 
