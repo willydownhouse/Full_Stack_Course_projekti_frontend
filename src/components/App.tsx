@@ -26,6 +26,8 @@ type AppProps = {
   store: RootStateOrAny;
 };
 
+//for commit
+
 const App = ({ store }: AppProps) => {
   const isLoggedIn = useSelector((state: IState) => state.auth.isLoggedIn);
   const dispatch = useDispatch();
