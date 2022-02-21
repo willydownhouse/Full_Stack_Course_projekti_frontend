@@ -41,7 +41,12 @@ export const login =
   };
 
 export const signup =
-  (email: string, password: string, confirmPassword: string) =>
+  (
+    email: string,
+    password: string,
+    confirmPassword: string,
+    location: string
+  ) =>
   async (dispatch: IAppDispatch) => {
     try {
       const res = await tripApi.post('/signup', {
@@ -51,7 +56,9 @@ export const signup =
       });
 
       if (res.status === 201) {
-        dispatch(login(email, password, 'You succesfully created account!'));
+        dispatch(
+          login(email, password, location, 'You succesfully created account!')
+        );
       }
       // eslint-disable-next-line @typescript-eslint/no-explicit-any
     } catch (err: any) {

@@ -53,7 +53,9 @@ const LoginForm = () => {
           { resetForm }
         ) => {
           showSignUp
-            ? dispatch(signup(email, password, confirmPassword as string))
+            ? dispatch(
+                signup(email, password, confirmPassword as string, location)
+              )
             : dispatch(login(email, password, location));
 
           resetForm();
